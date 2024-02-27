@@ -1,0 +1,244 @@
+\documentclass[envcountsame,envcountchap]{svmono}
+
+
+\usepackage{makeidx}                % allows index generation
+\usepackage{graphicx}               % standard LaTeX graphics tool
+%\usepackage{xtab}                                   % when including figure files
+\usepackage{multicol}
+\usepackage{qtree}
+\usepackage{booktabs}
+\usepackage{latexsym}
+\usepackage{psfig}                  % used for the two-column index
+\usepackage[bottom]{footmisc}       % places footnotes at page bottom
+\usepackage[italian]{babel}
+\usepackage{blindtext}
+
+\usepackage{my_listings}
+\usepackage[hyphens]{url}
+\usepackage{epstopdf}
+
+\usepackage[ansinew]{inputenc}
+
+%\setlength{\textwidth}{12.4cm} \setlength{\textheight}{18.0cm}
+%\setlength{\oddsidemargin}{4.60cm}
+%\setlength {\evensidemargin}{0.5cm}  %foglio a destra 0.06
+%\setlength {\topmargin}{-1cm}
+%
+%\hoffset -8mm
+
+\setlength{\textwidth}{12.7cm}
+\setlength{\textheight}{20.0cm}
+\setlength{\oddsidemargin}{3.50cm}
+\setlength {\evensidemargin}{-0.3cm}  %foglio a destra 0.06
+\setlength {\topmargin}{-1cm}
+
+\renewcommand\definitionname{Definizione}
+\renewcommand\theoremname{Teorema}
+\renewcommand\propositionname{Proposizione}
+\renewcommand\corollaryname{Corollario}
+\renewcommand\examplename{Esempio}
+
+
+\lstnewenvironment{codice}[1][Listato]
+{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,
+		keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
+		language=Java, basicstyle=\small,
+		frame=shadowbox, float=*, #1}}{}
+
+
+
+
+
+\def\punto{\hspace*{\fill}\Box}
+
+\catcode`\ì=\active \def ì{\`{\i}} \catcode`\í=\active \def
+í{\`{\i}} \catcode`\è=\active \def è{\`e} \catcode`\é=\active \def
+é{\`e} \catcode`\È=\active \def È{\`E} \catcode`\É=\active \def
+É{\`E} \catcode`\à=\active \def à{\`a} \catcode`\á=\active \def
+á{\`a} \catcode`\À=\active \def À{\`A} \catcode`\Á=\active \def
+Á{\`A} \catcode`\ù=\active \def ù{\`u} \catcode`\ú=\active \def
+ú{\`u} \catcode`\ò=\active \def ò{\`o} \catcode`\ó=\active \def
+ó{\`o}
+
+
+\makeindex             % used for the subject index
+                       % please use the style svind.ist with
+                       % your makeindex program
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{}
+\begin{document}
+
+%\maketitle
+
+
+\pagenumbering{Roman}
+%\setcounter{page}{5}
+
+\frontmatter
+
+\begin{titlepage}
+
+    \begin{center}
+
+    \large{\bf Università degli Studi Mediterranea di Reggio Calabria}
+
+    \vspace*{1mm}
+
+    \large{Dipartimento di Ingegneria dell'Informazione, delle Infrastrutture e dell'Energia Sostenibile}
+
+    \vspace*{1mm}
+
+    \normalsize{Corso di Laurea in Ingegneria dell'Informazione}
+
+    \vspace*{1mm}
+
+    %\normalsize{Dipartimento di Informatica, Matematica, Elettronica e Trasporti}
+
+    \hspace*{-0mm}
+
+    \rule{125mm}{.2mm}  %{lunghezza}{spessore}
+
+
+    \vspace{18mm}
+
+    \begin{figure}[h!]
+    \centerline{\includegraphics[width=2cm]{logounirc.png}}
+    \end{figure}
+
+    \vspace{5mm}
+
+    \textbf{Tesi di Laurea}
+
+    \vspace{5mm}
+
+    \large{\bf TITOLO DELLA TESI }
+
+    \vspace{22mm}
+
+    \begin{tabular}{lcl}
+    {\large Relatore} & \ \hskip 4cm \ & {\large Candidato} \\
+    \ & \ & \ \\
+    {Prof. Francesco Verdi} &    & {Andrea Rossi}\\
+    \ & \ & \ \\
+    \ & \ & \ \\
+    \\
+    \end{tabular}
+
+    \rule{125mm}{.2mm}
+
+    \textbf{Anno Accademico 2017-2018}
+    \end{center}
+
+\end{titlepage}
+
+
+
+\newpage
+
+
+\tableofcontents
+
+\listoffigures
+
+
+
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagenumbering{arabic} \setcounter{page}{1}
+
+\chapter{Introduzione} \label{introduzione}
+
+Esempio di tesi (prodotta con \LaTeX)
+
+\vspace{2cm}
+
+\Blindtext[3]
+
+
+
+
+
+\chapter{Questo è il capitolo 2} \label{cap2}
+\begin{flushright}
+\textit{E' possibile inserire qui una sintesi breve del contenuto dell'intero capitolo}
+\end{flushright}
+\medskip
+
+
+\Blindtext[3]
+
+
+
+
+
+
+\section{Esempio di sezione}\label{sec:analisi_requisiti}
+\Blindtext[3]
+
+\subsection{Esempio di sotto-sezione}\label{sec:diagrammi}
+
+
+\begin{figure}[t]
+\centerline{\includegraphics[width=10cm]{logounirc.png}}
+\caption{Esempio di figura}\label{fig:progetto}
+\end{figure}
+
+Esempio di riferimento a figura: in Figura \ref{fig:progetto} è mostrato ... 
+
+
+
+\begin{table}[t]
+    \begin{center}
+    \begin{tabular}{||c|l||}
+      \hline
+      \hline
+     Col 1  & \ Col 2 \\ \hline
+      xxx  & \ ??? \\ \hline
+      xxx  & \ ??? \\ \hline
+      xxx & \ ??? \\ \hline
+    \hline
+    \hline
+    \end{tabular}
+    \end{center}
+    \caption{Esempio di tabella}\label{table:notation}
+\end{table}
+
+
+Esempio di riferimento a tabella: in Tabella \ref{table:notation} ....
+
+
+\subsection{Un altro esempio di sotto-sezione}
+\Blindtext[5]
+
+\subsection{Ultimo esempio di sotto-sezione}
+\Blindtext[5]
+
+
+
+
+\chapter{Conclusioni}
+\label{cap:conclusioni}
+
+
+\Blindtext[6]
+
+
+
+
+
+
+\begin{thebibliography}{1}
+	
+	\bibitem{Android}
+	{Sito UNIRC}.
+	\newblock {\em \tt \url{http://www.unirc.it}}, 2018.
+	
+	\bibitem{vidas2011all}
+	Sito DIIES.
+	\newblock {\em \tt \url{http://www.diies.unirc.it}}, 2018.
+	
+\end{thebibliography}
+
+
+\end{document} 
