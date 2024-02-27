@@ -17,7 +17,7 @@
 \usepackage[hyphens]{url}
 \usepackage{epstopdf}
 
-\usepackage[ansinew]{inputenc}
+\usepackage[utf8]{inputenc}
 
 %\setlength{\textwidth}{12.4cm} \setlength{\textheight}{18.0cm}
 %\setlength{\oddsidemargin}{4.60cm}
@@ -51,14 +51,25 @@
 
 \def\punto{\hspace*{\fill}\Box}
 
-\catcode`\Ï=\active \def Ï{\`{\i}} \catcode`\Ì=\active \def
-Ì{\`{\i}} \catcode`\Ë=\active \def Ë{\`e} \catcode`\È=\active \def
-È{\`e} \catcode`\»=\active \def »{\`E} \catcode`\…=\active \def
-…{\`E} \catcode`\‡=\active \def ‡{\`a} \catcode`\·=\active \def
-·{\`a} \catcode`\¿=\active \def ¿{\`A} \catcode`\¡=\active \def
-¡{\`A} \catcode`\˘=\active \def ˘{\`u} \catcode`\˙=\active \def
-˙{\`u} \catcode`\Ú=\active \def Ú{\`o} \catcode`\Û=\active \def
-Û{\`o}
+% \catcode`\√¨=\active \def √¨{\`{\i}}
+
+
+
+
+% \catcode`\√¨=\active \def √¨{\`{\i}}
+% \catcode`\√≠=\active \def √≠{\`{\i}}
+% \catcode`\√®=\active \def √®{\`e}
+% \catcode`\√©=\active \def √©{\`e}
+% \catcode`\√à=\active \def √à{\`E}
+% \catcode`\√â=\active \def √â{\`E}
+% \catcode`\√†=\active \def √†{\`a}
+% \catcode`\√°=\active \def √°{\`a}
+% \catcode`\√Ä=\active \def √Ä{\`A}
+% \catcode`\√Å=\active \def √Å{\`A}
+% \catcode`\√π=\active \def √π{\`u}
+% \catcode`\√∫=\active \def √∫{\`u}
+% \catcode`\√≤=\active \def √≤{\`o}
+% \catcode`\√≥=\active \def √≥{\`o}
 
 
 \makeindex             % used for the subject index
@@ -68,7 +79,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \date{}
 \begin{document}
-
+\blinddocument
 %\maketitle
 
 
@@ -81,15 +92,15 @@
 
     \begin{center}
 
-    \large{\bf Universit‡ degli Studi Mediterranea di Reggio Calabria}
+    \large{\bf Universit√† degli Studi Mediterranea di Reggio Calabria}
 
     \vspace*{1mm}
 
-    \large{Dipartimento di Ingegneria dell'Informazione, delle Infrastrutture e dell'Energia Sostenibile}
+    \large{Dipartimento di Ingegneria Civile, Energia, Ambiente e Materiali}
 
     \vspace*{1mm}
 
-    \normalsize{Corso di Laurea in Ingegneria dell'Informazione}
+    \normalsize{Corso di Laurea in Ingegneria Industriale}
 
     \vspace*{1mm}
 
@@ -117,7 +128,7 @@
     \vspace{22mm}
 
     \begin{tabular}{lcl}
-    {\large Relatore} & \ \hskip 4cm \ & {\large Candidato} \\
+    {\large Relatore} & \ \hskip 4cm \ & {\large Alessandro Campolo} \\
     \ & \ & \ \\
     {Prof. Francesco Verdi} &    & {Andrea Rossi}\\
     \ & \ & \ \\
@@ -127,7 +138,7 @@
 
     \rule{125mm}{.2mm}
 
-    \textbf{Anno Accademico 2017-2018}
+    \textbf{Anno Accademico 2023-2024}
     \end{center}
 
 \end{titlepage}
@@ -159,7 +170,7 @@ Esempio di tesi (prodotta con \LaTeX)
 
 
 
-\chapter{Questo Ë il capitolo 2} \label{cap2}
+\chapter{Questo √® il capitolo 2} \label{cap2}
 \begin{flushright}
 \textit{E' possibile inserire qui una sintesi breve del contenuto dell'intero capitolo}
 \end{flushright}
@@ -184,7 +195,7 @@ Esempio di tesi (prodotta con \LaTeX)
 \caption{Esempio di figura}\label{fig:progetto}
 \end{figure}
 
-Esempio di riferimento a figura: in Figura \ref{fig:progetto} Ë mostrato ... 
+Esempio di riferimento a figura: in Figura \ref{fig:progetto} √® mostrato ... 
 
 
 
@@ -235,8 +246,8 @@ Esempio di riferimento a tabella: in Tabella \ref{table:notation} ....
 	\newblock {\em \tt \url{http://www.unirc.it}}, 2018.
 	
 	\bibitem{vidas2011all}
-	Sito DIIES.
-	\newblock {\em \tt \url{http://www.diies.unirc.it}}, 2018.
+	Sito DICEAM.
+	\newblock {\em \tt \url{http://www.diceam.unirc.it}}, 2018.
 	
 \end{thebibliography}
 
