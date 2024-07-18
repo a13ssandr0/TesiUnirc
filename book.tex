@@ -51,25 +51,6 @@
 
 \def\punto{\hspace*{\fill}\Box}
 
-% \catcode`\ì=\active \def ì{\`{\i}}
-
-
-
-
-% \catcode`\ì=\active \def ì{\`{\i}}
-% \catcode`\í=\active \def í{\`{\i}}
-% \catcode`\è=\active \def è{\`e}
-% \catcode`\é=\active \def é{\`e}
-% \catcode`\È=\active \def È{\`E}
-% \catcode`\É=\active \def É{\`E}
-% \catcode`\à=\active \def à{\`a}
-% \catcode`\á=\active \def á{\`a}
-% \catcode`\À=\active \def À{\`A}
-% \catcode`\Á=\active \def Á{\`A}
-% \catcode`\ù=\active \def ù{\`u}
-% \catcode`\ú=\active \def ú{\`u}
-% \catcode`\ò=\active \def ò{\`o}
-% \catcode`\ó=\active \def ó{\`o}
 
 
 \makeindex             % used for the subject index
@@ -79,12 +60,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \date{}
 \begin{document}
-\blinddocument
+%\blinddocument
 %\maketitle
 
 
 \pagenumbering{Roman}
-%\setcounter{page}{5}
+\setcounter{page}{5}
 
 \frontmatter
 
@@ -228,7 +209,7 @@ Esempio di riferimento a tabella: in Tabella \ref{table:notation} ....
 
 
 
-\chapter{Conclusioni}
+\chapter{Conclusioni\cite{vidas2011all}}
 \label{cap:conclusioni}
 
 
@@ -238,18 +219,8 @@ Esempio di riferimento a tabella: in Tabella \ref{table:notation} ....
 
 
 
-
-\begin{thebibliography}{1}
-	
-	\bibitem{Android}
-	{Sito UNIRC}.
-	\newblock {\em \tt \url{http://www.unirc.it}}, 2018.
-	
-	\bibitem{vidas2011all}
-	Sito DICEAM.
-	\newblock {\em \tt \url{http://www.diceam.unirc.it}}, 2018.
-	
-\end{thebibliography}
+\bibliographystyle{apalike} % We choose the "plain" reference style
+\bibliography{biblio} % Entries are in the refs.bib file
 
 
 \end{document} 
