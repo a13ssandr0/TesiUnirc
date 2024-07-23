@@ -1,30 +1,31 @@
 \documentclass[envcountsame,envcountchap]{svmono}
+% Import fontspec package for font management
+\usepackage{fontspec}
 
+% Set main font (example using "Times New Roman")
+%\setmainfont{Baskerville}
 
-\usepackage{makeidx}                % allows index generation
-\usepackage{graphicx}               % standard LaTeX graphics tool
-%\usepackage{xtab}                                   % when including figure files
+\usepackage{parskip}
+\usepackage{makeidx}    % allows index generation
+\usepackage{graphicx}   % standard LaTeX graphics tool when including figure files
 \usepackage{multicol}
-\usepackage{qtree}
 \usepackage{booktabs}
 \usepackage{latexsym}
-\usepackage{psfig}                  % used for the two-column index
-\usepackage[bottom]{footmisc}       % places footnotes at page bottom
 \usepackage[italian]{babel}
 \usepackage{blindtext}
-
-\usepackage{my_listings}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{minted}
 \usepackage[hyphens]{url}
-\usepackage{epstopdf}
+\usepackage{acronym}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{lscape}
+\usepackage{hyperref} % serve per inserire link nel testo, 
+% utile solo per documenti non destinati alla stampa
 
-\usepackage[utf8]{inputenc}
-
-%\setlength{\textwidth}{12.4cm} \setlength{\textheight}{18.0cm}
-%\setlength{\oddsidemargin}{4.60cm}
-%\setlength {\evensidemargin}{0.5cm}  %foglio a destra 0.06
-%\setlength {\topmargin}{-1cm}
-%
-%\hoffset -8mm
 
 \setlength{\textwidth}{12.7cm}
 \setlength{\textheight}{20.0cm}
@@ -39,18 +40,9 @@
 \renewcommand\examplename{Esempio}
 
 
-\lstnewenvironment{codice}[1][Listato]
-{\lstset{basicstyle=\small\ttfamily, columns=fullflexible,
-		keywordstyle=\color{red}\bfseries, commentstyle=\color{blue},
-		language=Java, basicstyle=\small,
-		frame=shadowbox, float=*, #1}}{}
-
-
-
 
 
 \def\punto{\hspace*{\fill}\Box}
-
 
 
 \makeindex             % used for the subject index
@@ -60,12 +52,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \date{}
 \begin{document}
-%\blinddocument
+
 %\maketitle
 
 
 \pagenumbering{Roman}
-\setcounter{page}{5}
+%\setcounter{page}{5}
 
 \frontmatter
 
@@ -85,8 +77,6 @@
 
     \vspace*{1mm}
 
-    %\normalsize{Dipartimento di Informatica, Matematica, Elettronica e Trasporti}
-
     \hspace*{-0mm}
 
     \rule{125mm}{.2mm}  %{lunghezza}{spessore}
@@ -95,7 +85,7 @@
     \vspace{18mm}
 
     \begin{figure}[h!]
-    \centerline{\includegraphics[width=2cm]{logounirc.png}}
+        \centerline{\includegraphics[width=3cm]{logounirc.png}}
     \end{figure}
 
     \vspace{5mm}
@@ -104,17 +94,19 @@
 
     \vspace{5mm}
 
-    \large{\bf TITOLO DELLA TESI }
+    \large{\bf <TITOLO DELLA TESI> }
 
     \vspace{22mm}
 
     \begin{tabular}{lcl}
-    {\large Relatore} & \ \hskip 4cm \ & {\large Alessandro Campolo} \\
-    \ & \ & \ \\
-    {Prof. Francesco Verdi} &    & {Andrea Rossi}\\
-    \ & \ & \ \\
-    \ & \ & \ \\
-    \\
+        {\large Relatore} & \ \hskip 2.2cm \ & {\large Candidato} \\
+        \ & \ & \ \\
+        {<NOME RELATORE>} &                  & {<NOME CANDIDATO>}\\
+        \ & \ & \ \\
+        {\large Correlatore} &               & \\ %commentare se assente
+        \ & \ & \ \\
+        {<NOME CORRELATORE>} &               & \\ %commentare se assente
+        \\
     \end{tabular}
 
     \rule{125mm}{.2mm}
@@ -124,103 +116,289 @@
 
 \end{titlepage}
 
-
+\newpage
+\newpage
+\cleardoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}
+\begin{flushright}
+\itshape
+<DEDICA>
+\end{flushright}
+\vspace{\stretch{2}}
+\cleardoublepage
 
 \newpage
 
+\thispagestyle{empty}
 
+% questo aggiunge l'indice al documento
 \tableofcontents
 
 \listoffigures
 
 
 
-\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic} \setcounter{page}{7}
 
-\pagenumbering{arabic} \setcounter{page}{1}
+\chapter*{Indice degli acronimi}
+\markboth{Indice degli acronimi}{Indice degli acronimi}
+\begin{acronym}[WYSIWYM]
+    % gli acronimi devono essere ordinati manualmente
+    \acro{DICEAM}{Dipartimento di Ingegneria Civile, dell'Energia, dell'Ambiente e dei Materiali}
+    \acro{DIIES}{Dipartimento di Ingegneria dell'Informazione, delle Infrastrutture e dell'Energia Sostenibile}
+    \acro{DiGiES}{Dipartimento di Giurisprudenza, Economia e Scienze Umane}
+    \acro{dArTe}{Dipartimento di Architettura e Territorio}
+    \acro{PAU}{Dipartimento di Patrimonio, Architettura e Urbanistica}
+\end{acronym}
 
-\chapter{Introduzione} \label{introduzione}
 
-Esempio di tesi (prodotta con \LaTeX)
+
+
+\chapter*{Introduzione} \label{introduzione}
+\addcontentsline{toc}{chapter}{Introduzione}
+\markboth{Introduzione}{Introduzione}
 
 \vspace{2cm}
 
-\Blindtext[3]
+\hfill \textit{<METTI QUÌ UNA BREVE PRESENTAZIONE DEL CAPITOLO>}
+
+\vspace{0.5cm}
+
+
+Contenuto del capitolo.
+Se vai a capo una volta sola, \LaTeX non va a capo.
+
+Così invece sì.
+
+Oh, guarda, un elenco puntato:
+\begin{itemize}
+    \item Questo
+    \item È
+    \item Un
+    \item Elenco
+    \item Puntato
+\end{itemize}
 
 
 
 
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Questo è il capitolo 2} \label{cap2}
+
+\chapter{<TITOLO DEL PRIMO CAPITOLO>} \label{Cap.1}
+
+\vspace{2cm}
+
 \begin{flushright}
-\textit{E' possibile inserire qui una sintesi breve del contenuto dell'intero capitolo}
+\textit{<ALTRA BREVE PRESENTAZIONE>}
 \end{flushright}
-\medskip
+
+\vspace{0.5cm}
+
+\section{<TITOLO DELLA SEZIONE>}
+\LaTeX permette di creare sezioni, sottosezioni e sotto-sottosezioni.
+
+\subsection{<TITOLO DELLA SOTTOSEZIONE>}
+Questa è una sottosezione.
+
+\subsubsection{<TITOLO DELLA SOTTO-SOTTOSEZIONE>}
+Ed ecco la sotto-sottosezione.
+
+Non ti sono bastati 3 livelli?
+
+\href{https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection}{Questo è un link per stackexchange, spiega come aggiungere altri livelli di sottosezioni.}
+
+\section{È il momento delle figure}
+
+\LaTeX adora spostare le figure, quindi bisognerà un po' giocare col testo per trovare la posizione adatta.
 
 
-\Blindtext[3]
-
-
-
-
-
-
-\section{Esempio di sezione}\label{sec:analisi_requisiti}
-\Blindtext[3]
-
-\subsection{Esempio di sotto-sezione}\label{sec:diagrammi}
-
-
-\begin{figure}[t]
-\centerline{\includegraphics[width=10cm]{logounirc.png}}
-\caption{Esempio di figura}\label{fig:progetto}
+\begin{figure}[h]
+    \centering 
+    \includegraphics[width=0.2\linewidth]{logodiceam.png} 
+    \caption{Per comodità useremo il logo del dipartimento DICEAM.}
+    \label{figura_logo_diceam}
 \end{figure}
 
-Esempio di riferimento a figura: in Figura \ref{fig:progetto} è mostrato ... 
+In generale è consigliabile lasciar fare tutto al compilatore e poi referenziare la figura così \ref{figura_logo_diceam}. \citep{forceFigurePlacement}
+
+Se proprio è necessario posizionare l'immagine in una posizione precisa, usare [H] invece di [h].
+
+\section{Syntax highlighting}
+Se a qualcuno piacesse scrivere codice e magari renderlo leggibile, minted fa al caso suo.
+Altri stili: \\
+\url{https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted}
+
+\begin{minted}{python}
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{minted}
+
+\chapter{<SECONDO CAPITOLO>} \label{Cap.2}
+
+\vspace{2cm}
+
+\begin{flushright}
+\textit{<ALTRA BREVE DESCRIZIONE>}
+\end{flushright}
+
+\vspace{0.5cm}
+
+Testo multicolonna: 
+
+\begin{multicols}{2}
+    \textbf{Colonna 1}\\
+    Testo della prima colonna.
+\columnbreak\\
+    \textbf{Colonna 2}\\
+    Non lo scrivo nemmeno.
+\end{multicols}
 
 
+% \chapter{<TERZO CAPITOLO>}  \label{Cap.3}
 
-\begin{table}[t]
-    \begin{center}
-    \begin{tabular}{||c|l||}
-      \hline
-      \hline
-     Col 1  & \ Col 2 \\ \hline
-      xxx  & \ ??? \\ \hline
-      xxx  & \ ??? \\ \hline
-      xxx & \ ??? \\ \hline
+% \vspace{2cm}
+
+% \begin{flushright}
+%  \textit{<<>>}
+% \end{flushright}
+
+% \vspace{0.5cm}
+
+Signore e signori, sua maestà l'elenco numerato:
+\begin{enumerate}
+    \item Lorem
+    \item Ipsum
+    \item Dolor
+    \item Sit
+    \item Amet
+    \item Sì ho avuto molta fantasia
+\end{enumerate} 
+
+%questo abominio serve per forzare latex a saltare una riga
+~\\
+
+Un elenco di elenchi??
+
+Roba degna del più forte elencatore d'Italia. \citep{elencatoreSeriale}
+\begin{itemize}
+    \item \textbf{A}: AAAA
+    \begin{itemize}
+        \item Aa
+        \item Ab
+        \item Ac
+        \item Ad
+        \item Ae
+        \item Af
+    \end{itemize} 
+    \item \textbf{B}: BBBB
+    \begin{itemize}
+        \item Ba
+        \item Bb
+        \item Bc
+        \item Bd
+        \item Be
+        \item Bf
+    \end{itemize}
+\end{itemize}
+
+\newpage
+newpage termina la pagina attuale e inizia una nuova pagina.
+
+\vspace*{2cm}
+
+Non avevamo ancora parlato delle tabelle.
+
+Sono lunghe da trattare quindi lasciamo il duro compito alla documentazione di Overleaf.
+\url{https://www.overleaf.com/learn/latex/Tables}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c||} 
     \hline
+    Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+    \hline\hline
+    1 & 6 & 87837 & 787 \\ 
+    2 & 7 & 78 & 5415 \\
+    3 & 545 & 778 & 7507 \\
+    4 & 545 & 18744 & 7560 \\
+    5 & 88 & 788 & 6344 \\ [1ex] 
     \hline
-    \end{tabular}
-    \end{center}
-    \caption{Esempio di tabella}\label{table:notation}
+\end{tabular}
+\caption{Table to test captions and labels.}
+\label{table:1}
 \end{table}
 
 
-Esempio di riferimento a tabella: in Tabella \ref{table:notation} ....
+\newpage
+\begin{landscape}
+landscape mette il contenuto della pagina in orizzontale.
+\end{landscape}
+    
 
 
-\subsection{Un altro esempio di sotto-sezione}
-\Blindtext[5]
+\chapter*{Conclusioni}
+\addcontentsline{toc}{chapter}{Conclusioni}
+\markboth{Conclusioni}{Conclusioni}
 
-\subsection{Ultimo esempio di sotto-sezione}
-\Blindtext[5]
+\vspace{2cm}
+
+\begin{flushright}
+ \textit{<SINTESI DELLE CONCLUSIONI>}
+\end{flushright}
+
+\vspace{0.5cm}
+
+Le conclusioni funzionano come tutti gli altri capitroli.
+
+Come l'introduzione questo capitolo non ha il numero.
+
+\section*{Sezione delle conclusioni}
+La sezione con l'asterisco non ha il numero.
+
+\chapter*{Ringraziamenti}
+\addcontentsline{toc}{chapter}{Ringraziamenti}
+\markboth{Ringraziamenti}{Ringraziamenti}
+
+Ringrazio il dipartimento DIIES per aver pubblicato un modello di tesi non troppo aggiornato.
+
+Ringrazio Alessandro Campolo\footnote{``ringrazio me stesso" è poco radiofonico.} \footnote{e così abbiamo scoperto anche le note a piè di pagina.}
+per aver aggiornato il modello e scritto la documentazione per installare tutti i programmi per lavorare al documento.
+
+Ringrazio Gemma Pia Romeo per aver fornito la sua tesi come punto di partenza per gli esempi presenti in queste pagine.
 
 
 
 
-\chapter{Conclusioni\cite{vidas2011all}}
-\label{cap:conclusioni}
-
-
-\Blindtext[6]
-
-
-
-
-
-\bibliographystyle{apalike} % We choose the "plain" reference style
-\bibliography{biblio} % Entries are in the refs.bib file
-
+\bibliographystyle{apalike}
+\bibliography{biblio}
 
 \end{document} 
