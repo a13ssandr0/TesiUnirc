@@ -402,11 +402,47 @@ Il risultato finale dovrebbe essere qualcosa di simile a \ref{json_impostazioni_
 
 \vspace{0.5cm}
 
-La scrittura di un la
+La scrittura di un lavoro di tesi richiede tempo ed è consigliabile che questo documento non esista in una sola copia,
+per evitare disastri e per poter lavorare da più dispositivi (se necessario), è altamente consigliabile usare un software
+di controllo verione per poter sempre avere traccia delle modifiche e sincronizzarle con un server remoto all'occorrenza.
 
+Per svolgere questo compito ci si avvarrà del programma git e del server GitHub.
 
+\section{git}
+git è un client che permette la creazione e gestione di repository.
+\subsection{Installazione \citep{installGit}}
+In base alle prove effettuate, risulta già installato su MacOS, quindi questo non verrà documentato.
+\subsubsection{Windows}
+Cliccando col tasto destro sull'icona di Start, a seconda della versione del sistema operativo e della configurazione, cliccare su:
+\begin{itemize}
+    \item Apri Powershell (Amministratore)
+    \item Apri Prompt dei comandi (Amministratore)
+    \item Apri Terminale (Amministratore)
+\end{itemize}
+Nel prompt scrivere {\tt winget install git.git}, accettare con {\tt y} e invio quando chiede conferma.
 
+\subsubsection{Linux}
+Anche in questo caso l'installazione dipende da distribuzione a distribuzione. Per le distribuzioni Debian-based, il comando è il seguente:
+\begin{minted}{bash}
+    sudo apt install git
+\end{minted}
 
+\subsection{Configurazione}
+Per poter usare git è necessario specificare nome e email dell'utente che lo userà.
+Sempre nel terminale inserire questi due comandi (validi per tutte le piattaforme) opportunamente modificati con i vostri dati, è molto 
+importante prestare attenzione alle virgolette attorno a nome e email:
+\begin{minted}{bash}
+    git config --global user.name "Mario Rossi"
+    git config --global user.email "mario.rossi@unirc.it"
+\end{minted}
+
+\section{GitHub}
+\begin{wrapfigure}{l}{0.25\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/github.png}
+    \caption{Logo GitHub}
+    \label{logo_github}
+\end{figure}
 
 
 
