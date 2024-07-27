@@ -94,18 +94,19 @@
 
     \vspace{5mm}
 
-    \large{\bf <TITOLO DELLA TESI> }
+    %% TITOLO DELLA TESI
+    \large{\bf Creazione di un modello \LaTeX\ aggiornato e semplificato per tesi di laurea.}
 
     \vspace{22mm}
 
     \begin{tabular}{lcl}
         {\large Relatore} & \ \hskip 2.2cm \ & {\large Candidato} \\
         \ & \ & \ \\
-        {<NOME RELATORE>} &                  & {<NOME CANDIDATO>}\\
+        {Alessandro Campolo} &                  & {Alessandro Campolo}\\
         \ & \ & \ \\
         {\large Correlatore} &               & \\ %commentare se assente
         \ & \ & \ \\
-        {<NOME CORRELATORE>} &               & \\ %commentare se assente
+        {Alessandro Campolo} &               & \\ %commentare se assente
         \\
     \end{tabular}
 
@@ -154,123 +155,273 @@
 
 
 
-
+% il motivo dei seguenti tre comandi è di creare un nuovo capitolo regolare, ma senza numero
 \chapter*{Introduzione} \label{introduzione}
+% l'asterisco crea un capitolo non numerato, non presente nell'indice
+% e senza titolo in intestazione e piè di pagina
 \addcontentsline{toc}{chapter}{Introduzione}
+% addcontentsline aggiunge una voce all'indice
 \markboth{Introduzione}{Introduzione}
+% markboth imposta intestazione e piè di pagina
 
 \vspace{2cm}
 
-\hfill \textit{<METTI QUÌ UNA BREVE PRESENTAZIONE DEL CAPITOLO>}
+\hfill \textit{Introduzione al documento}
 
 \vspace{0.5cm}
 
 
-Contenuto del capitolo.
-Se vai a capo una volta sola, \LaTeX non va a capo.
+Il presente lavoro intende essere un modello di tesi del Dipartimento DICEAM 
+(per l'esempio è stato usato il corso di Ingegneria Industriale).
 
-Così invece sì.
-
-Oh, guarda, un elenco puntato:
+Nel corso della trattazione verranno illustrati:
 \begin{itemize}
-    \item Questo
-    \item È
-    \item Un
-    \item Elenco
-    \item Puntato
+    \item Installazione e configurazione di:
+        \begin{itemize}
+            \item TeX Live
+            \item Visual Studio Code
+            \item Estensione Latex Workshop per Visual Studio Code
+        \end{itemize}
+    \item Introduzione ai sistemi di controllo versione:
+        \begin{itemize}
+            \item git
+            \item GitHub
+            \item Fork e modifica di una repository
+        \end{itemize}
+    \item Esempi di elementi di \LaTeX\ come:
+        \begin{itemize}
+            \item immagini
+            \item elenchi
+            \item bibliografia
+            \item tabelle
+            \item spazi, righe e pagine
+        \end{itemize}
 \end{itemize}
-
+  
 
 
 
 \mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\chapter{<TITOLO DEL PRIMO CAPITOLO>} \label{Cap.1}
+\chapter{Preparazione dell'ambiente} \label{Cap.1}
 
 \vspace{2cm}
 
 \begin{flushright}
-\textit{<ALTRA BREVE PRESENTAZIONE>}
+\textit{Installazione e configurazione del compilatore TeX Live e dell'editor Visual Studio Code}
 \end{flushright}
 
 \vspace{0.5cm}
 
-\section{<TITOLO DELLA SEZIONE>}
-\LaTeX permette di creare sezioni, sottosezioni e sotto-sottosezioni.
+L'installazione dei programmi verrà documentata per le tre principali piattaforme
+\begin{itemize}
+    \item Windows
+    \item MacOS
+    \item Linux e Unix-like
+\end{itemize}
 
-\subsection{<TITOLO DELLA SOTTOSEZIONE>}
-Questa è una sottosezione.
+\section{TeX Live}
+Essendo il processo più lungo, è consigliabile cominciare con l'installazione di TeX Live.
 
-\subsubsection{<TITOLO DELLA SOTTO-SOTTOSEZIONE>}
-Ed ecco la sotto-sottosezione.
+\subsection{Windows}
+Per l'installazione su Windows scaricare l'installer da \url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}.
+
+L'installazione dovrebbe andare a buon fine con le impostazioni di default.
+
+\subsection{MacOS \citep{installMacTeX}}
+Dopo il download d \url{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}, fare doppio clic per installarlo. Seguite le semplici istruzioni. L'installazione su un Macintosh recente richiede circa dieci minuti.
+
+Il programma di installazione presenta:
+\begin{itemize}
+    \item una pagina di benvenuto
+    \item una pagina ReadMe con ulteriori informazioni
+    \item una pagina di licenza software
+    \item una pagina finale, facendo clic sul pulsante “Installa” in questa pagina si avvia l'installazione vera e propria
+\end{itemize}
+
+La pagina finale presenta anche un pulsante “Personalizza”, che conduce a un pannello che consente agli utenti di decidere quali pezzi installare: Ghostscript, le applicazioni dell'interfaccia grafica e TeX Live stesso. La maggior parte degli utenti sceglierà l'installazione standard e ignorerà il pulsante “Personalizza”. Gli utenti che usano MacPorts o HomeBrew potrebbero preferire l'uso di Ghostscript fornito da questi progetti; in tal caso dovrebbero usare “Personalizza” per disabilitare l'installazione di Ghostscript.
+
+Al termine dell'installazione, il programma di installazione riporta “Success”.
+
+
+\subsubsection{Risoluzione dei problemi}
+A volte, l'installatore visualizza una finestra di dialogo che dice “Verifica...” e poi l'installazione si blocca. In tutti i casi conosciuti, il riavvio del Macintosh risolve il problema. Dopo il riavvio, eseguire nuovamente l'installazione.
+
+Se durante l'installazione vengono segnalati altri problemi, passare alla sezione “Errori di installazione”.
+
+MacTeX scrive un collegamento simbolico /Library/TeX/texbin che punta indirettamente alla directory binaria di TeX Live. Configurare i programmi GUI per utilizzare questo collegamento. I programmi GUI forniti si configurano automaticamente.
+
+Nel caso in cui la compilazione dei documenti dovesse dare un errore di tipo ENOENT, è necessario aggiungere il compilatore al PATH,
+per farlo aprire un terminale e scrivere:
+\begin{minted}{zsh}
+    nano $HOME/.zshrc
+\end{minted}
+Nel file che si apre aggiungere alla fine la riga
+\begin{minted}{zsh}
+    export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
+\end{minted}
+Per sicurezza verificare il percorso, perchè la cartella 2024 cambia in base alla versione, mentre la cartella universal-darwin cambia in base, non solo alla versione, ma anche all'architettura del processore.
+
+Dopo questo passaggio è consigliabile chiudere COMPLETAMENTE Visual Studio Code dal menù in alto a sinistra e riaprirlo, se non dovesse risolvere, riavviare il computer.
+
+Questa che hai appena letto è una sotto-sottosezione.
 
 Non ti sono bastati 3 livelli?
 
 \href{https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection}{Questo è un link per stackexchange, spiega come aggiungere altri livelli di sottosezioni.}
 
-\section{È il momento delle figure}
-
-\LaTeX adora spostare le figure, quindi bisognerà un po' giocare col testo per trovare la posizione adatta.
-
-
-\begin{figure}[h]
-    \centering 
-    \includegraphics[width=0.2\linewidth]{logodiceam.png} 
-    \caption{Per comodità useremo il logo del dipartimento DICEAM.}
-    \label{figura_logo_diceam}
-\end{figure}
-
-In generale è consigliabile lasciar fare tutto al compilatore e poi referenziare la figura così \ref{figura_logo_diceam}. \citep{forceFigurePlacement}
-
-Se proprio è necessario posizionare l'immagine in una posizione precisa, usare [H] invece di [h].
-
-\section{Syntax highlighting}
-Se a qualcuno piacesse scrivere codice e magari renderlo leggibile, minted fa al caso suo.
-Altri stili: \\
-\url{https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted}
-
-\begin{minted}{python}
-import numpy as np
-    
-def incmatrix(genl1,genl2):
-    m = len(genl1)
-    n = len(genl2)
-    M = None #to become the incidence matrix
-    VT = np.zeros((n*m,1), int)  #dummy variable
-    
-    #compute the bitwise xor matrix
-    M1 = bitxormatrix(genl1)
-    M2 = np.triu(bitxormatrix(genl2),1) 
-
-    for i in range(m-1):
-        for j in range(i+1, m):
-            [r,c] = np.where(M2 == M1[i,j])
-            for k in range(len(r)):
-                VT[(i)*n + r[k]] = 1;
-                VT[(i)*n + c[k]] = 1;
-                VT[(j)*n + r[k]] = 1;
-                VT[(j)*n + c[k]] = 1;
-                
-                if M is None:
-                    M = np.copy(VT)
-                else:
-                    M = np.concatenate((M, VT), 1)
-                
-                VT = np.zeros((n*m,1), int)
-    
-    return M
+\subsection{Linux e Unix}
+Per voi uomini coraggiosi che non avete paura di usare un terminale, propongo i comandi per l'installazione su distribuzioni Debian-based:
+\begin{minted}{bash}
+    sudo apt install texlive-science texlive-latex-extra latexmk \
+        texlive-extra-utils texlive-publishers texlive-science
 \end{minted}
 
-\chapter{<SECONDO CAPITOLO>} \label{Cap.2}
+\section{Visual Studio Code}
+Per la scrittura si userà Visual Studio Code, editor multipiattaforma estensibile con numerosi plug-in.
+D'ora in poi ci si riferirà ad esso col suo nome breve: vscode.
+
+\subsection{Installazione}
+\subsubsection{Windows, MacOS e distribuzioni Linux senza snap}
+Per l'installazione su queste piattaforme si consiglia di seguire direttamente il sito del programma \url{https://code.visualstudio.com/download}.
+
+\subsubsection{Distribuzioni con snap}
+\begin{minted}{bash}
+    sudo snap install code --classic
+\end{minted}
+
+\subsection{Configurazione}
+Installato Visual Studio Code e completata la configurazione iniziale (opzionale),
+la schermata presentata sarà simile a questa.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/vscode/vscode.png}
+    \caption{Schermata iniziale di vscode}
+    \label{schermata_iniziale_vscode}
+\end{figure}
+Cliccare su \includegraphics[height=5mm]{images/vscode/estensioni_icona.png}
+per aprire il menu delle estensioni.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/vscode/vscode_latex_workshop.png}
+    \caption{Schermata gestore estensioni}
+    \label{schermata_gestore_estensioni}
+\end{figure}
+Nella barra di ricerca cercare Latex Workshop e premere su installa per avviare l'installazione.
+Terminata l'installazione aprire il menu delle azioni rapide con Ctrl + Alt + P (Cmd + Alt + P su MacOS).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/vscode/vscode_user_settings.png}
+    \caption{Menu azioni rapide}
+    \label{menu_azioni_rapide}
+\end{figure}
+Cercare "Open User Settings (JSON)" come in figura \ref{menu_azioni_rapide} e selezionare la voce.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/vscode/vscode_settings_json.png}
+    \caption{File JSON delle impostazioni}
+    \label{json_impostazioni}
+\end{figure}
+Nella schermata che si apre incollare il contenuto del file my\_settings.json presente nella cartella del progetto.
+È possibile eliminare il file dopo aver inserito il suo contenuto nel file settings.json di vscode.\\
+ATTENZIONE: Il file che si sta modificando è un file JSON, in quanto tale richiede alcuni semplici accorgimenti di sintassi.
+Se, come nella figura \ref{json_impostazioni}, sono già presenti altre righe, dopo l'ultima è necessario aggiungere una virgola prima di incollare il resto delle impostazioni.
+
+Il risultato finale dovrebbe essere qualcosa di simile a \ref{json_impostazioni_nuovo}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/vscode/vscode_settings_json2.png}
+    \caption{File JSON delle impostazioni dopo la modifica}
+    \label{json_impostazioni_nuovo}
+\end{figure}
+
+
+
+
+% \section{È il momento delle figure}
+
+% \LaTeX adora spostare le figure, quindi bisognerà un po' giocare col testo per trovare la posizione adatta.
+
+
+% \begin{figure}[h]
+%     \centering 
+%     \includegraphics[width=0.2\linewidth]{logodiceam.png} 
+%     \caption{Per comodità useremo il logo del dipartimento DICEAM.}
+%     \label{figura_logo_diceam}
+% \end{figure}
+
+% In generale è consigliabile lasciar fare tutto al compilatore e poi referenziare la figura così \ref{figura_logo_diceam}. \citep{forceFigurePlacement}
+
+% Se proprio è necessario posizionare l'immagine in una posizione precisa, usare [H] invece di [h].
+
+% \section{Syntax highlighting}
+% Se a qualcuno piacesse scrivere codice e magari renderlo leggibile, minted fa al caso suo.
+% Altri stili: \\
+% \url{https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted}
+
+% \begin{minted}{python}
+% import numpy as np
+    
+% def incmatrix(genl1,genl2):
+%     m = len(genl1)
+%     n = len(genl2)
+%     M = None #to become the incidence matrix
+%     VT = np.zeros((n*m,1), int)  #dummy variable
+    
+%     #compute the bitwise xor matrix
+%     M1 = bitxormatrix(genl1)
+%     M2 = np.triu(bitxormatrix(genl2),1) 
+
+%     for i in range(m-1):
+%         for j in range(i+1, m):
+%             [r,c] = np.where(M2 == M1[i,j])
+%             for k in range(len(r)):
+%                 VT[(i)*n + r[k]] = 1;
+%                 VT[(i)*n + c[k]] = 1;
+%                 VT[(j)*n + r[k]] = 1;
+%                 VT[(j)*n + c[k]] = 1;
+                
+%                 if M is None:
+%                     M = np.copy(VT)
+%                 else:
+%                     M = np.concatenate((M, VT), 1)
+                
+%                 VT = np.zeros((n*m,1), int)
+    
+%     return M
+% \end{minted}
+
+\chapter{Controllo versione} \label{Cap.2}
 
 \vspace{2cm}
 
 \begin{flushright}
-\textit{<ALTRA BREVE DESCRIZIONE>}
+\textit{Breve introduzione al sistema di controllo versione per sincronizzazione dei file del documento su server GitHub.}
 \end{flushright}
 
 \vspace{0.5cm}
+
+La scrittura di un la
+
+
+
+
+
+
+
+
+\chapter{<TERZO CAPITOLO>}  \label{Cap.3}
+
+\vspace{2cm}
+
+\begin{flushright}
+ \textit{<<>>}
+\end{flushright}
+
+\vspace{0.5cm}
+
+
 
 Testo multicolonna: 
 
@@ -283,16 +434,6 @@ Testo multicolonna:
 \end{multicols}
 
 
-% \chapter{<TERZO CAPITOLO>}  \label{Cap.3}
-
-% \vspace{2cm}
-
-% \begin{flushright}
-%  \textit{<<>>}
-% \end{flushright}
-
-% \vspace{0.5cm}
-
 Signore e signori, sua maestà l'elenco numerato:
 \begin{enumerate}
     \item Lorem
@@ -304,7 +445,13 @@ Signore e signori, sua maestà l'elenco numerato:
 \end{enumerate} 
 
 %questo abominio serve per forzare latex a saltare una riga
-~\\
+\ \\
+
+Per forzare uno o più spazi bisogna usare uno o più backslash, ognuno seguito da uno spazio.\\
+Testo normale\\
+Testo \ con uno spazio\\
+Testo \ \ con due spazi\\
+Testo \ \ \ con tre spazi
 
 Un elenco di elenchi??
 
