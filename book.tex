@@ -8,6 +8,8 @@
 \usepackage{parskip}
 \usepackage{makeidx}    % allows index generation
 \usepackage{graphicx}   % standard LaTeX graphics tool when including figure files
+\usepackage{subcaption} % per più figure sulla stessa riga
+\usepackage{wrapfig}
 \usepackage{multicol}
 \usepackage{booktabs}
 \usepackage{latexsym}
@@ -209,7 +211,7 @@ Nel corso della trattazione verranno illustrati:
 \vspace{2cm}
 
 \begin{flushright}
-\textit{Installazione e configurazione del compilatore TeX Live e dell'editor Visual Studio Code}
+\textit{Installazione e configurazione del compilatore\\ TeX Live e dell'editor Visual Studio Code}
 \end{flushright}
 
 \vspace{0.5cm}
@@ -227,43 +229,163 @@ Essendo il processo più lungo, è consigliabile cominciare con l'installazione 
 \subsection{Windows}
 Per l'installazione su Windows scaricare l'installer da \url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}.
 
-L'installazione dovrebbe andare a buon fine con le impostazioni di default.
+L'installer è firmato con una chiave non registrata in Windows, di conseguenza SmartScreen visualizzerà un avviso,
+l'installer è completamente sicuro ed è possibile ignorare questo avviso.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/texlive/win/1_smart_screen.png}
+    \caption{Avviso di SmartScreen}
+    \label{avviso_smart_screen}
+\end{figure}
+Cliccare "Ulteriori informazioni" per mostrare il pulsante "Esegui comunque" e cliccarlo.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/texlive/win/2_smart_screen_2.png}
+    \caption{Ulteriori informazioni di SmartScreen}
+    \label{info_smart_screen}
+\end{figure}
+Nella prima schermata dell'installer scegliere "Install", poi premere "Next" e infine "Install".
+\begin{figure}[H]
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/texlive/win/3_install_mode.png}
+        \caption{Selezione modalità di installazione}
+        \label{texlive_install_mode}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/texlive/win/4_start_installer.png}
+        \caption{Avvio del configuratore}
+        \label{texlive_config}
+    \end{subfigure}
+\end{figure}
+Nella schermata che si apre scegliere il mirror italiano dal menu a tendina.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\linewidth]{images/texlive/win/6_mirror_select.png}
+    \caption{Selezione del mirror}
+    \label{texlive_mirror}
+\end{figure}
+Dal momento che si userà solo Visual Studio Code per la scrittura, è possibile escludere TeXworks dall'installazione.
+Utenti più esperti possono usare le opzioni avanzate per selezionare manualmente i pacchetti da installare
+e velocizzare l'installazione. Questa parte non è attualmente oggetto della documentazione e viene lasciata
+come triviale esercizio per il lettore.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/texlive/win/7_configurator.png}
+    \caption{Ulteriori configurazioni}
+    \label{texlive_config_2}
+\end{figure}
+L'installazione di tutti i pacchetti può richiedere anche due ore, è possibile continuare a seguire i passaggi successivi di questa guida.
+\begin{figure}[H]
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/texlive/win/8_download_packages.png}
+        \caption{Log di installazione}
+        \label{texlive_install_log}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/texlive/win/9_end_screen.png}
+        \caption{Fine dell'installazione}
+        \label{texlive_installato}
+    \end{subfigure}
+\end{figure}
+
 
 \subsection{MacOS \citep{installMacTeX}}
-Dopo il download d \url{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}, fare doppio clic per installarlo. Seguite le semplici istruzioni. L'installazione su un Macintosh recente richiede circa dieci minuti.
+Dopo il download di \url{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}, fare doppio clic per installarlo. Seguite le semplici istruzioni. L'installazione su un Macintosh recente richiede circa dieci minuti.
 
 Il programma di installazione presenta:
 \begin{itemize}
     \item una pagina di benvenuto
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/1_introduzione.png}
+            \caption{MacTeX: Introduzione}
+            \label{mactex_introduzione}
+        \end{figure}
     \item una pagina ReadMe con ulteriori informazioni
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/2_leggimi.png}
+            \caption{MacTeX: Leggimi}
+            \label{mactex_readme}
+        \end{figure}
     \item una pagina di licenza software
-    \item una pagina finale, facendo clic sul pulsante “Installa” in questa pagina si avvia l'installazione vera e propria
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/3_licenza.png}
+            \caption{MacTeX: Licenza}
+            \label{mactex_licenza}
+        \end{figure}
+    \item una finestra di dialogo per accettare la licenza
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/4_accettazione_licenza.png}
+            \caption{MacTeX: Accettazione Licenza}
+            \label{mactex_acc_licenza}
+        \end{figure}
+    \item una pagina di conferma della posizione di installazione
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/5_destinazione.png}
+            \caption{MacTeX: Destinazione di installazione}
+            \label{mactex_dest_installazione}
+        \end{figure}
+    \item una pagina con il progresso dell'installazione (confermare autenticandosi)
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/6_installazione.png}
+            \caption{MacTeX: Autenticazione per l'installazione}
+            \label{mactex_install_auth}
+        \end{figure}
+    \item una pagina finale
+        \begin{figure}[H]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/texlive/mac/7_fine_installazione.png}
+            \caption{MacTeX: Fine installazione}
+            \label{mactex_fine_inst}
+        \end{figure}
 \end{itemize}
 
-La pagina finale presenta anche un pulsante “Personalizza”, che conduce a un pannello che consente agli utenti di decidere quali pezzi installare: Ghostscript, le applicazioni dell'interfaccia grafica e TeX Live stesso. La maggior parte degli utenti sceglierà l'installazione standard e ignorerà il pulsante “Personalizza”. Gli utenti che usano MacPorts o HomeBrew potrebbero preferire l'uso di Ghostscript fornito da questi progetti; in tal caso dovrebbero usare “Personalizza” per disabilitare l'installazione di Ghostscript.
+Al termine dell'installazione una finestra di dialogo chiede se si vuole eliminare l'installer,
+spostarlo nel cestino per risparmiare spazio su disco.
 
-Al termine dell'installazione, il programma di installazione riporta “Success”.
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/texlive/mac/8_eliminazione_installer.png}
+    \caption{MacTeX: Eliminazione installer}
+    \label{mactex_eliminazione_installer}
+\end{figure}
 
 \subsubsection{Risoluzione dei problemi}
-A volte, l'installatore visualizza una finestra di dialogo che dice “Verifica...” e poi l'installazione si blocca. In tutti i casi conosciuti, il riavvio del Macintosh risolve il problema. Dopo il riavvio, eseguire nuovamente l'installazione.
+\begin{itemize}
 
-Se durante l'installazione vengono segnalati altri problemi, passare alla sezione “Errori di installazione”.
+    \item \label{enoent} Nel caso in cui la compilazione dei documenti dovesse dare un errore di tipo ENOENT, è necessario aggiungere il compilatore al PATH,
+        per farlo aprire un terminale e scrivere:
+        %gobble rimuove i primi n caratteri dalle righe, permettendo 
+        % così di indentare il codice in LaTeX
+        %autogobble rimuove automaticamente gli spazi, preservando l'indentazione
+        \begin{minted}[gobble=10]{zsh}
+            nano $HOME/.zshrc
+        \end{minted}
+        Nel file che si apre aggiungere alla fine la riga
+        \begin{minted}[gobble=10]{zsh}
+            export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
+        \end{minted}
+        Per sicurezza verificare il percorso, perchè la cartella {\tt 2024} cambia in base alla versione, mentre la cartella {\tt universal-darwin} cambia in base, non solo alla versione, ma anche all'architettura del processore.
 
-MacTeX scrive un collegamento simbolico /Library/TeX/texbin che punta indirettamente alla directory binaria di TeX Live. Configurare i programmi GUI per utilizzare questo collegamento. I programmi GUI forniti si configurano automaticamente.
+        Dopo questo passaggio è consigliabile chiudere COMPLETAMENTE Visual Studio Code dal menù in alto a sinistra e riaprirlo, se non dovesse risolvere, riavviare il computer.
 
-Nel caso in cui la compilazione dei documenti dovesse dare un errore di tipo ENOENT, è necessario aggiungere il compilatore al PATH,
-per farlo aprire un terminale e scrivere:
-\begin{minted}{zsh}
-    nano $HOME/.zshrc
-\end{minted}
-Nel file che si apre aggiungere alla fine la riga
-\begin{minted}{zsh}
-    export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
-\end{minted}
-Per sicurezza verificare il percorso, perchè la cartella 2024 cambia in base alla versione, mentre la cartella universal-darwin cambia in base, non solo alla versione, ma anche all'architettura del processore.
 
-Dopo questo passaggio è consigliabile chiudere COMPLETAMENTE Visual Studio Code dal menù in alto a sinistra e riaprirlo, se non dovesse risolvere, riavviare il computer.
+    \item A volte, l'installatore visualizza una finestra di dialogo che dice “Verifica...” e poi l'installazione si blocca. In tutti i casi conosciuti, il riavvio del Macintosh risolve il problema. Dopo il riavvio, eseguire nuovamente l'installazione.
+
+    \item Se durante l'installazione vengono segnalati altri problemi, riferirsi alla sezione \href{https://www.tug.org/mactex/mactex-download.html}{“Errori di installazione”} della guida ufficiale.
+
+    \item MacTeX scrive un collegamento simbolico /Library/TeX/texbin che punta alla directory dei binari di TeX Live. Configurare i programmi GUI per utilizzare questo collegamento. I programmi GUI forniti si configurano automaticamente.
+    
+\end{itemize}
 
 Questa che hai appena letto è una sotto-sottosezione.
 
@@ -397,7 +519,7 @@ Il risultato finale dovrebbe essere qualcosa di simile a \ref{json_impostazioni_
 \vspace{2cm}
 
 \begin{flushright}
-\textit{Breve introduzione al sistema di controllo versione per sincronizzazione dei file del documento su server GitHub.}
+\textit{Breve introduzione al sistema di controllo versione\\ per sincronizzazione dei file del documento su GitHub.}
 \end{flushright}
 
 \vspace{0.5cm}
@@ -406,10 +528,10 @@ La scrittura di un lavoro di tesi richiede tempo ed è consigliabile che questo 
 per evitare disastri e per poter lavorare da più dispositivi (se necessario), è altamente consigliabile usare un software
 di controllo verione per poter sempre avere traccia delle modifiche e sincronizzarle con un server remoto all'occorrenza.
 
-Per svolgere questo compito ci si avvarrà del programma git e del server GitHub.
+Per svolgere questo compito ci si avvarrà del programma git e del servizio GitHub.
 
-\section{git}
-git è un client che permette la creazione e gestione di repository.
+\section{Git}
+Git è un client che permette la creazione e gestione di repository.
 \subsection{Installazione \citep{installGit}}
 In base alle prove effettuate, risulta già installato su MacOS, quindi questo non verrà documentato.
 \subsubsection{Windows}
@@ -428,7 +550,7 @@ Anche in questo caso l'installazione dipende da distribuzione a distribuzione. P
 \end{minted}
 
 \subsection{Configurazione}
-Per poter usare git è necessario specificare nome e email dell'utente che lo userà.
+Per poter usare Git è necessario specificare nome e email dell'utente che lo userà.
 Sempre nel terminale inserire questi due comandi (validi per tutte le piattaforme) opportunamente modificati con i vostri dati, è molto 
 importante prestare attenzione alle virgolette attorno a nome e email:
 \begin{minted}{bash}
@@ -437,22 +559,68 @@ importante prestare attenzione alle virgolette attorno a nome e email:
 \end{minted}
 
 \section{GitHub}
-\begin{wrapfigure}{l}{0.25\textwidth}
+\begin{wrapfigure}{l}{0.10\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{images/github.png}
-    \caption{Logo GitHub}
+    \vspace{-0.5\linewidth} % Rimuove lo spazio bianco prima della figura
+    \includegraphics[width=\linewidth]{images/github/github.png}
+    \vspace{-0.9\linewidth} % Rimuove lo spazio bianco dopo della figura
+    %\caption{Logo GitHub}
     \label{logo_github}
+\end{wrapfigure}
+
+GitHub è un servizio di hosting per progetti software, che implementa lo strumento di controllo versione distribuito Git.
+Recandosi alla pagina \url{https://github.com} è possibile registrarsi o accedere al proprio account, per poter creare
+un proprio fork\footnote{Nell'ambito dell'ingegneria del software e dell'informatica, indica lo sviluppo di un nuovo progetto 
+software che parte dal codice sorgente di un altro già esistente, a opera di un programmatore.} di questo progetto.
+
+La registrazione è una procedura triviale e non è necessario documentarla.
+
+Recarsi alla pagina \url{https://github.com/a13ssandr0/TesiUnirc} e premere il pulsante {\tt Fork} in alto a destra.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/github/fork.png}
+    \caption{Pulsante fork}
+    \label{pulsante_fork}
 \end{figure}
 
+Nella pagina che appare dare un nome alla repository\footnote{Una repository è la cartella principale in cui vengono salvati i file.}
+e concludere con Create fork.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/github/new_fork.png}
+    \caption{Pagina creazione fork}
+    \label{pagina_fork}
+\end{figure}
+
+\newpage
+
+\section{Visual Studio Code}
+Creata la repository personale, è possibile clonarla in vscode. \citep{vscodeGit}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/vscode/vscode_clone_repo.png}
+    \caption{Menu clonazione repository}
+    \label{clonazione_repository}
+\end{figure}
+La prima volta, prima di far selezionare la repository chiederà di accedere con il proprio account GitHub.
+Inserire il nome della propria repository per clonarla, premere invio e selezionare la cartella in cui clonarla.
+Vscode automaticamente la scaricherà e aprirà il progetto.
+
+Se tutto è stato configurato correttamente, aprendo il file book.tex comparirà un triangolo verde in alto 
+a destra per compilare il documento e creare il pdf, in generale il progetto viene
+ricompilato automaticamente ad ogni salvataggio del file.
+
+Su MacOS è molto probabile che all'esecuzione del compilatore venga restituito un errore ENOENT,
+fare riferimento al primo punto della sezione Risoluzione dei problemi a pagina \pageref{enoent}.
 
 
 
-\chapter{<TERZO CAPITOLO>}  \label{Cap.3}
+\chapter{Esempi}  \label{Cap.3}
 
 \vspace{2cm}
 
 \begin{flushright}
- \textit{<<>>}
+ \textit{Altri esempi di scrittura in \LaTeX\ che non è stato possibile inserire nei capitoli precedenti.}
 \end{flushright}
 
 \vspace{0.5cm}
