@@ -25,6 +25,8 @@
 \usepackage{natbib}
 \usepackage{array}
 \usepackage{lscape}
+\usepackage{amsmath}
+\usepackage[normalem]{ulem} % testo barrato
 \usepackage{hyperref} % serve per inserire link nel testo, 
 % utile solo per documenti non destinati alla stampa
 
@@ -104,7 +106,7 @@
     \begin{tabular}{lcl}
         {\large Relatore} & \ \hskip 2.2cm \ & {\large Candidato} \\
         \ & \ & \ \\
-        {Alessandro Campolo} &                  & {Alessandro Campolo}\\
+        {Alessandro Campolo} &               & {Alessandro Campolo}\\
         \ & \ & \ \\
         {\large Correlatore} &               & \\ %commentare se assente
         \ & \ & \ \\
@@ -144,7 +146,7 @@
 
 \pagenumbering{arabic} \setcounter{page}{7}
 
-\chapter*{Indice degli acronimi}
+\chapter*{Indice degli acronimi} \label{acronimi}
 \markboth{Indice degli acronimi}{Indice degli acronimi}
 \begin{acronym}[WYSIWYM]
     % gli acronimi devono essere ordinati manualmente
@@ -177,6 +179,7 @@ Il presente lavoro intende essere un modello di tesi del Dipartimento DICEAM
 (per l'esempio è stato usato il corso di Ingegneria Industriale).
 
 Nel corso della trattazione verranno illustrati:
+\label{esempio_elenco_puntato}
 \begin{itemize}
     \item Installazione e configurazione di:
         \begin{itemize}
@@ -223,10 +226,11 @@ L'installazione dei programmi verrà documentata per le tre principali piattafor
     \item Linux e Unix-like
 \end{itemize}
 
-\section{TeX Live}
+\section{TeX Live}\label{sezione}
 Essendo il processo più lungo, è consigliabile cominciare con l'installazione di TeX Live.
 
-\subsection{Windows}
+\subsection{Windows}\label{sottosezione}
+\label{esempio_url}
 Per l'installazione su Windows scaricare l'installer da \url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}.
 
 L'installer è firmato con una chiave non registrata in Windows, di conseguenza SmartScreen visualizzerà un avviso,
@@ -292,12 +296,15 @@ L'installazione di tutti i pacchetti può richiedere anche due ore, è possibile
     \end{subfigure}
 \end{figure}
 
-
+\label{esempio_citazione}
 \subsection{MacOS \citep{installMacTeX}}
-Dopo il download di \url{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}, fare doppio clic per installarlo. Seguite le semplici istruzioni. L'installazione su un Macintosh recente richiede circa dieci minuti.
+Dopo il download di \url{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}, 
+fare doppio clic per installarlo. Seguite le semplici istruzioni. 
+L'installazione su MacOS recente richiede circa dieci minuti.
 
 Il programma di installazione presenta:
-\begin{itemize}
+\label{esempio_elenco_numerato}
+\begin{enumerate}
     \item una pagina di benvenuto
         \begin{figure}[H]
             \centering
@@ -347,7 +354,7 @@ Il programma di installazione presenta:
             \caption{MacTeX: Fine installazione}
             \label{mactex_fine_inst}
         \end{figure}
-\end{itemize}
+\end{enumerate}
 
 Al termine dell'installazione una finestra di dialogo chiede se si vuole eliminare l'installer,
 spostarlo nel cestino per risparmiare spazio su disco.
@@ -359,14 +366,17 @@ spostarlo nel cestino per risparmiare spazio su disco.
     \label{mactex_eliminazione_installer}
 \end{figure}
 
-\subsubsection{Risoluzione dei problemi}
+\subsubsection{Risoluzione dei problemi}\label{sottosottosezione}
 \begin{itemize}
 
-    \item \label{enoent} Nel caso in cui la compilazione dei documenti dovesse dare un errore di tipo ENOENT, è necessario aggiungere il compilatore al PATH,
+    \item \label{enoent} Nel caso in cui la compilazione dei documenti 
+        dovesse dare un errore di tipo ENOENT,
+        è necessario aggiungere il compilatore al PATH,
         per farlo aprire un terminale e scrivere:
         %gobble rimuove i primi n caratteri dalle righe, permettendo 
         % così di indentare il codice in LaTeX
         %autogobble rimuove automaticamente gli spazi, preservando l'indentazione
+        \label{codice_con_minted}
         \begin{minted}[gobble=10]{zsh}
             nano $HOME/.zshrc
         \end{minted}
@@ -374,39 +384,47 @@ spostarlo nel cestino per risparmiare spazio su disco.
         \begin{minted}[gobble=10]{zsh}
             export PATH="/usr/local/texlive/2024/bin/universal-darwin:$PATH"
         \end{minted}
-        Per sicurezza verificare il percorso, perchè la cartella {\tt 2024} cambia in base alla versione, mentre la cartella {\tt universal-darwin} cambia in base, non solo alla versione, ma anche all'architettura del processore.
+        Per sicurezza verificare il percorso, perchè la cartella {\tt 2024} cambia
+         in base alla versione, mentre la cartella {\tt universal-darwin} cambia in base,
+         non solo alla versione, ma anche all'architettura del processore.
 
-        Dopo questo passaggio è consigliabile chiudere COMPLETAMENTE Visual Studio Code dal menù in alto a sinistra e riaprirlo, se non dovesse risolvere, riavviare il computer.
+        Dopo questo passaggio è consigliabile chiudere COMPLETAMENTE Visual Studio Code 
+        dal menù in alto a sinistra e riaprirlo, se non dovesse risolvere, 
+        riavviare il computer.
 
 
-    \item A volte, l'installatore visualizza una finestra di dialogo che dice “Verifica...” e poi l'installazione si blocca. In tutti i casi conosciuti, il riavvio del Macintosh risolve il problema. Dopo il riavvio, eseguire nuovamente l'installazione.
+    \item A volte, l'installatore visualizza una finestra di dialogo che dice 
+        “Verifica...” e poi l'installazione si blocca. In tutti i casi conosciuti, 
+        il riavvio del Macintosh risolve il problema. Dopo il riavvio, 
+        eseguire nuovamente l'installazione.
 
-    \item Se durante l'installazione vengono segnalati altri problemi, riferirsi alla sezione \href{https://www.tug.org/mactex/mactex-download.html}{“Errori di installazione”} della guida ufficiale.
+    \item Se durante l'installazione vengono segnalati altri problemi, riferirsi alla sezione 
+        \href{https://www.tug.org/mactex/mactex-download.html}{“Errori di installazione”} della guida ufficiale.
 
-    \item MacTeX scrive un collegamento simbolico /Library/TeX/texbin che punta alla directory dei binari di TeX Live. Configurare i programmi GUI per utilizzare questo collegamento. I programmi GUI forniti si configurano automaticamente.
+    \item MacTeX scrive un collegamento simbolico /Library/TeX/texbin che punta 
+        alla directory dei binari di TeX Live. Configurare i programmi GUI per utilizzare 
+        questo collegamento. I programmi GUI forniti si configurano automaticamente.
     
 \end{itemize}
 
-Questa che hai appena letto è una sotto-sottosezione.
-
-Non ti sono bastati 3 livelli?
-
-\href{https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection}{Questo è un link per stackexchange, spiega come aggiungere altri livelli di sottosezioni.}
 
 \subsection{Linux e Unix}
-Per voi uomini coraggiosi che non avete paura di usare un terminale, propongo i comandi per l'installazione su distribuzioni Debian-based:
+Per voi uomini temerari che non avete paura di usare un terminale, 
+propongo i comandi per l'installazione su distribuzioni Debian-based:
 \begin{minted}{bash}
     sudo apt install texlive-science texlive-latex-extra latexmk \
         texlive-extra-utils texlive-publishers texlive-science
 \end{minted}
 
 \section{Visual Studio Code}
-Per la scrittura si userà Visual Studio Code, editor multipiattaforma estensibile con numerosi plug-in.
+Per la scrittura si userà Visual Studio Code, editor multipiattaforma 
+estensibile con numerosi plug-in.
 D'ora in poi ci si riferirà ad esso col suo nome breve: vscode.
 
 \subsection{Installazione}
 \subsubsection{Windows, MacOS e distribuzioni Linux senza snap}
-Per l'installazione su queste piattaforme si consiglia di seguire direttamente il sito del programma \url{https://code.visualstudio.com/download}.
+Per l'installazione su queste piattaforme si consiglia di seguire 
+direttamente il sito del programma \url{https://code.visualstudio.com/download}.
 
 \subsubsection{Distribuzioni con snap}
 \begin{minted}{bash}
@@ -445,10 +463,15 @@ Cercare "Open User Settings (JSON)" come in figura \ref{menu_azioni_rapide} e se
     \caption{File JSON delle impostazioni}
     \label{json_impostazioni}
 \end{figure}
-Nella schermata che si apre incollare il contenuto del file my\_settings.json presente nella cartella del progetto.
-È possibile eliminare il file dopo aver inserito il suo contenuto nel file settings.json di vscode.\\
-ATTENZIONE: Il file che si sta modificando è un file JSON, in quanto tale richiede alcuni semplici accorgimenti di sintassi.
-Se, come nella figura \ref{json_impostazioni}, sono già presenti altre righe, dopo l'ultima è necessario aggiungere una virgola prima di incollare il resto delle impostazioni.
+Nella schermata che si apre incollare il contenuto del file 
+my\_settings.json presente nella cartella del progetto.
+È possibile eliminare il file dopo aver inserito il suo contenuto 
+nel file settings.json di vscode.\\
+ATTENZIONE: Il file che si sta modificando è un file JSON, in quanto
+tale richiede alcuni semplici accorgimenti di sintassi.
+Se, come nella figura \ref{json_impostazioni}, sono già presenti altre 
+righe, dopo l'ultima è necessario aggiungere una virgola prima 
+di incollare il resto delle impostazioni.
 
 Il risultato finale dovrebbe essere qualcosa di simile a \ref{json_impostazioni_nuovo}
 \begin{figure}[H]
@@ -458,61 +481,6 @@ Il risultato finale dovrebbe essere qualcosa di simile a \ref{json_impostazioni_
     \label{json_impostazioni_nuovo}
 \end{figure}
 
-
-
-
-% \section{È il momento delle figure}
-
-% \LaTeX adora spostare le figure, quindi bisognerà un po' giocare col testo per trovare la posizione adatta.
-
-
-% \begin{figure}[h]
-%     \centering 
-%     \includegraphics[width=0.2\linewidth]{logodiceam.png} 
-%     \caption{Per comodità useremo il logo del dipartimento DICEAM.}
-%     \label{figura_logo_diceam}
-% \end{figure}
-
-% In generale è consigliabile lasciar fare tutto al compilatore e poi referenziare la figura così \ref{figura_logo_diceam}. \citep{forceFigurePlacement}
-
-% Se proprio è necessario posizionare l'immagine in una posizione precisa, usare [H] invece di [h].
-
-% \section{Syntax highlighting}
-% Se a qualcuno piacesse scrivere codice e magari renderlo leggibile, minted fa al caso suo.
-% Altri stili: \\
-% \url{https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted}
-
-% \begin{minted}{python}
-% import numpy as np
-    
-% def incmatrix(genl1,genl2):
-%     m = len(genl1)
-%     n = len(genl2)
-%     M = None #to become the incidence matrix
-%     VT = np.zeros((n*m,1), int)  #dummy variable
-    
-%     #compute the bitwise xor matrix
-%     M1 = bitxormatrix(genl1)
-%     M2 = np.triu(bitxormatrix(genl2),1) 
-
-%     for i in range(m-1):
-%         for j in range(i+1, m):
-%             [r,c] = np.where(M2 == M1[i,j])
-%             for k in range(len(r)):
-%                 VT[(i)*n + r[k]] = 1;
-%                 VT[(i)*n + c[k]] = 1;
-%                 VT[(j)*n + r[k]] = 1;
-%                 VT[(j)*n + c[k]] = 1;
-                
-%                 if M is None:
-%                     M = np.copy(VT)
-%                 else:
-%                     M = np.concatenate((M, VT), 1)
-                
-%                 VT = np.zeros((n*m,1), int)
-    
-%     return M
-% \end{minted}
 
 \chapter{Controllo versione} \label{Cap.2}
 
@@ -524,41 +492,49 @@ Il risultato finale dovrebbe essere qualcosa di simile a \ref{json_impostazioni_
 
 \vspace{0.5cm}
 
-La scrittura di un lavoro di tesi richiede tempo ed è consigliabile che questo documento non esista in una sola copia,
-per evitare disastri e per poter lavorare da più dispositivi (se necessario), è altamente consigliabile usare un software
-di controllo verione per poter sempre avere traccia delle modifiche e sincronizzarle con un server remoto all'occorrenza.
+La scrittura di un lavoro di tesi richiede tempo ed è consigliabile che questo 
+documento non esista in una sola copia, per evitare disastri e per poter lavorare 
+da più dispositivi (se necessario), è altamente consigliabile usare un software
+di controllo versione per poter sempre avere traccia delle modifiche e sincronizzarle
+con un server remoto all'occorrenza.
 
 Per svolgere questo compito ci si avvarrà del programma git e del servizio GitHub.
 
 \section{Git}
 Git è un client che permette la creazione e gestione di repository.
 \subsection{Installazione \citep{installGit}}
-In base alle prove effettuate, risulta già installato su MacOS, quindi questo non verrà documentato.
+In base alle prove effettuate, risulta già installato su MacOS, 
+quindi questo non verrà documentato.
 \subsubsection{Windows}
-Cliccando col tasto destro sull'icona di Start, a seconda della versione del sistema operativo e della configurazione, cliccare su:
+Cliccando col tasto destro sull'icona di Start, a seconda della versione del 
+sistema operativo e della configurazione, cliccare su:
 \begin{itemize}
     \item Apri Powershell (Amministratore)
     \item Apri Prompt dei comandi (Amministratore)
     \item Apri Terminale (Amministratore)
 \end{itemize}
-Nel prompt scrivere {\tt winget install git.git}, accettare con {\tt y} e invio quando chiede conferma.
+Nel prompt scrivere {\tt winget install git.git}, accettare con {\tt y} 
+e invio quando chiede conferma.
 
 \subsubsection{Linux}
-Anche in questo caso l'installazione dipende da distribuzione a distribuzione. Per le distribuzioni Debian-based, il comando è il seguente:
+Anche in questo caso l'installazione dipende da distribuzione a distribuzione. 
+Per le distribuzioni Debian-based, il comando è il seguente:
 \begin{minted}{bash}
     sudo apt install git
 \end{minted}
 
 \subsection{Configurazione}
 Per poter usare Git è necessario specificare nome e email dell'utente che lo userà.
-Sempre nel terminale inserire questi due comandi (validi per tutte le piattaforme) opportunamente modificati con i vostri dati, è molto 
-importante prestare attenzione alle virgolette attorno a nome e email:
+Sempre nel terminale inserire questi due comandi (validi per tutte le piattaforme)
+opportunamente modificati con i vostri dati, è molto importante prestare attenzione
+alle virgolette attorno a nome e email:
 \begin{minted}{bash}
     git config --global user.name "Mario Rossi"
     git config --global user.email "mario.rossi@unirc.it"
 \end{minted}
 
 \section{GitHub}
+\label{wrapfigure}
 \begin{wrapfigure}{l}{0.10\textwidth}
     \centering
     \vspace{-0.5\linewidth} % Rimuove lo spazio bianco prima della figura
@@ -568,14 +544,19 @@ importante prestare attenzione alle virgolette attorno a nome e email:
     \label{logo_github}
 \end{wrapfigure}
 
-GitHub è un servizio di hosting per progetti software, che implementa lo strumento di controllo versione distribuito Git.
-Recandosi alla pagina \url{https://github.com} è possibile registrarsi o accedere al proprio account, per poter creare
-un proprio fork\footnote{Nell'ambito dell'ingegneria del software e dell'informatica, indica lo sviluppo di un nuovo progetto 
-software che parte dal codice sorgente di un altro già esistente, a opera di un programmatore.} di questo progetto.
+GitHub è un servizio di hosting per progetti software, che implementa lo strumento 
+di controllo versione distribuito Git.
+Recandosi alla pagina \url{https://github.com} è possibile registrarsi o accedere al 
+proprio account, per poter creare un proprio fork\footnote{Nell'ambito dell'ingegneria
+\label{nota_pie_pagina}
+del software e dell'informatica, indica lo sviluppo di un nuovo progetto software che
+parte dal codice sorgente di un altro già esistente, a opera di 
+un programmatore.} di questo progetto.
 
 La registrazione è una procedura triviale e non è necessario documentarla.
 
-Recarsi alla pagina \url{https://github.com/a13ssandr0/TesiUnirc} e premere il pulsante {\tt Fork} in alto a destra.
+Recarsi alla pagina \url{https://github.com/a13ssandr0/TesiUnirc} e premere il pulsante 
+{\tt Fork} in alto a destra.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/github/fork.png}
@@ -583,8 +564,8 @@ Recarsi alla pagina \url{https://github.com/a13ssandr0/TesiUnirc} e premere il p
     \label{pulsante_fork}
 \end{figure}
 
-Nella pagina che appare dare un nome alla repository\footnote{Una repository è la cartella principale in cui vengono salvati i file.}
-e concludere con Create fork.
+Nella pagina che appare dare un nome alla repository\footnote{Una repository è la 
+cartella principale in cui vengono salvati i file.} e concludere con Create fork.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/github/new_fork.png}
@@ -592,7 +573,7 @@ e concludere con Create fork.
     \label{pagina_fork}
 \end{figure}
 
-\newpage
+\newpage \label{nuova_pagina}
 
 \section{Visual Studio Code}
 Creata la repository personale, è possibile clonarla in vscode. \citep{vscodeGit}
@@ -602,16 +583,18 @@ Creata la repository personale, è possibile clonarla in vscode. \citep{vscodeGi
     \caption{Menu clonazione repository}
     \label{clonazione_repository}
 \end{figure}
-La prima volta, prima di far selezionare la repository chiederà di accedere con il proprio account GitHub.
-Inserire il nome della propria repository per clonarla, premere invio e selezionare la cartella in cui clonarla.
+La prima volta, prima di far selezionare la repository chiederà di accedere con il 
+proprio account GitHub. Inserire il nome della propria repository per clonarla, 
+premere invio e selezionare la cartella in cui clonarla.
 Vscode automaticamente la scaricherà e aprirà il progetto.
 
-Se tutto è stato configurato correttamente, aprendo il file book.tex comparirà un triangolo verde in alto 
-a destra per compilare il documento e creare il pdf, in generale il progetto viene
-ricompilato automaticamente ad ogni salvataggio del file.
+Se tutto è stato configurato correttamente, aprendo il file book.tex comparirà un 
+triangolo verde in alto a destra per compilare il documento e creare il pdf, in generale 
+il progetto viene ricompilato automaticamente ad ogni salvataggio del file.
 
-Su MacOS è molto probabile che all'esecuzione del compilatore venga restituito un errore ENOENT,
-fare riferimento al primo punto della sezione Risoluzione dei problemi a pagina \pageref{enoent}.
+Su MacOS è molto probabile che all'esecuzione del compilatore venga restituito un 
+errore ENOENT, fare riferimento al primo punto della sezione Risoluzione dei problemi
+a pagina \pageref{enoent}.
 
 
 
@@ -620,98 +603,147 @@ fare riferimento al primo punto della sezione Risoluzione dei problemi a pagina 
 \vspace{2cm}
 
 \begin{flushright}
- \textit{Altri esempi di scrittura in \LaTeX\ che non è stato possibile inserire nei capitoli precedenti.}
+ \textit{Altri esempi di scrittura in \LaTeX\\ che non è stato possibile inserire nei capitoli precedenti.}
 \end{flushright}
 
 \vspace{0.5cm}
 
+La seguente tabella\footnote{Altri esempi e stili \url{https://www.overleaf.com/learn/latex/Tables}} raccoglie i riferimenti ad elementi usati nelle pagine precedenti.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{||c | c | c||} 
+        \hline
+        Sezione & Elemento & Pagina \\ [0.5ex] 
+        \hline\hline
+        \ref{acronimi} & Indice degli acronimi & \pageref{acronimi} \\ 
+        \ref{introduzione} & Capitolo senza numero & \pageref{introduzione} \\
+        \ref{esempio_elenco_puntato} & Elenco puntato & \pageref{esempio_elenco_puntato} \\
+        \ref{esempio_elenco_puntato} & Elenco numerato & \pageref{esempio_elenco_puntato} \\
+        \ref{Cap.1} & Capitolo con numero & \pageref{Cap.1} \\
+        \ref{esempio_url} & URL & \pageref{esempio_url} \\
+        \ref{sezione} & Sezione & \pageref{sezione} \\
+        \ref{sottosezione} & Sottosezione & \pageref{sottosezione} \\
+        \ref{sottosottosezione} & Sotto-sottosezione\footnote{Non ti sono bastati 3 livelli? \href{https://tex.stackexchange.com/questions/60209/how-to-add-an-extra-level-of-sections-with-headings-below-subsubsection}{Questo è un link per stackexchange, spiega come aggiungere altri livelli di sottosezioni.}} & \pageref{sottosottosezione} \\
+        \ref{codice_con_minted} & Sezioni di codice\footnote{Minted mette a disposizione altri stili oltre a quello prefefinito, riferirsi a \url{https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted}} & \pageref{codice_con_minted} \\
+        \ref{wrapfigure} & Figura affiancata al testo & \pageref{wrapfigure} \\
+        \ref{nota_pie_pagina} & Nota a piè di pagina & \pageref{nota_pie_pagina} \\
+        \ref{nuova_pagina} & Citazione & \pageref{nuova_pagina} \\ [1ex] 
+        \hline
+    \end{tabular}
+    \caption{Questa è una tabella.}
+    \label{tabella_esempi}
+\end{table}
+
+\section{minted}
+Uso del pacchetto {\tt minted} per la visualizzazione di codice Python:
+\begin{minted}{python}
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{minted}
 
 
-Testo multicolonna: 
+\section{Testo multicolonna}
 
 \begin{multicols}{2}
     \textbf{Colonna 1}\\
-    Testo della prima colonna.
-\columnbreak\\
+    Testo della prima colonna.\\
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem.
+    \columnbreak\\
     \textbf{Colonna 2}\\
-    Non lo scrivo nemmeno.
+    Testo della seconda colonna.\\
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam lobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin. Praesent imperdiet mi nec ante. Donec ullamcorper, felis non sodales commodo, lectus velit ultrices augue, a dignissim nibh lectus placerat pede.
 \end{multicols}
 
-
-Signore e signori, sua maestà l'elenco numerato:
-\begin{enumerate}
-    \item Lorem
-    \item Ipsum
-    \item Dolor
-    \item Sit
-    \item Amet
-    \item Sì ho avuto molta fantasia
-\end{enumerate} 
-
-%questo abominio serve per forzare latex a saltare una riga
-\ \\
-
-Per forzare uno o più spazi bisogna usare uno o più backslash, ognuno seguito da uno spazio.\\
-Testo normale\\
-Testo \ con uno spazio\\
-Testo \ \ con due spazi\\
-Testo \ \ \ con tre spazi
-
-Un elenco di elenchi??
-
-Roba degna del più forte elencatore d'Italia. \citep{elencatoreSeriale}
-\begin{itemize}
-    \item \textbf{A}: AAAA
-    \begin{itemize}
-        \item Aa
-        \item Ab
-        \item Ac
-        \item Ad
-        \item Ae
-        \item Af
-    \end{itemize} 
-    \item \textbf{B}: BBBB
-    \begin{itemize}
-        \item Ba
-        \item Bb
-        \item Bc
-        \item Bd
-        \item Be
-        \item Bf
-    \end{itemize}
-\end{itemize}
-
 \newpage
-newpage termina la pagina attuale e inizia una nuova pagina.
+\section{Spazi e ritorni}
+{\tt \textbackslash newpage} termina la pagina attuale e inizia una nuova pagina.
+
+Segue uno spazio vuoto di 2cm.
 
 \vspace*{2cm}
 
-Non avevamo ancora parlato delle tabelle.
+Per forzare uno o più spazi bisogna usare uno o più backslash, ognuno seguito da uno spazio.\\
+Testo normale\\
+Testo \ con uno spazio in più\\
+Testo \ \ con due spazi in più\\
+Testo \ \ \ con tre spazi in più\\
 
-Sono lunghe da trattare quindi lasciamo il duro compito alla documentazione di Overleaf.
-\url{https://www.overleaf.com/learn/latex/Tables}
+Per forzare \LaTeX\ ad inserire una nuova riga vuota, inserire uno spazio e poi andare a capo.\\
+\begin{verbatim}
+\ \\
+\end{verbatim}
+Per scrivere questa sezione è stato usato il blocco {\tt verbatim}, il testo al suo interno non viene
+interpretato in alcun modo.
 
-\begin{table}[h!]
-\centering
-\begin{tabular}{||c c c c||} 
-    \hline
-    Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
-    \hline\hline
-    1 & 6 & 87837 & 787 \\ 
-    2 & 7 & 78 & 5415 \\
-    3 & 545 & 778 & 7507 \\
-    4 & 545 & 18744 & 7560 \\
-    5 & 88 & 788 & 6344 \\ [1ex] 
-    \hline
-\end{tabular}
-\caption{Table to test captions and labels.}
-\label{table:1}
-\end{table}
+
+
+Un elenco di elenchi??
+
+Roba degna del più famoso elencatore d'Italia. \citep{elencatoreSeriale}
+\begin{itemize}
+    \item Dell'aria
+    \item Dell'acqua
+    \item Dei fiumi
+    \item Dei mari
+    \item dei nostri boschi
+    \item delle nostre montagne
+    \item dei nostri ghiacciai
+    \begin{itemize}
+        \item puliti
+        \item riciclabili
+        \item rinnovabili
+        \item biodegradabili
+    \end{itemize} 
+\end{itemize}
+
+
+
 
 
 \newpage
 \begin{landscape}
-landscape mette il contenuto della pagina in orizzontale.
+    \section{Testo orizzontale}
+    landscape ruota il contenuto della pagina in orizzontale.
+    
+    Per scrivere un'equazione su \LaTeX si può ricorrere a molteplici modi:
+    \begin{itemize}
+        \item $F=ma$
+        \item Per centrare l'equazione:
+        \[E=mc^2\]
+    \end{itemize}
+    Se si vuole numerare e centrare l'equazione si procede in questo modo:
+    \begin{equation}
+        F=ma 
+    \end{equation}
+
 \end{landscape}
     
 
@@ -739,12 +771,15 @@ La sezione con l'asterisco non ha il numero.
 \addcontentsline{toc}{chapter}{Ringraziamenti}
 \markboth{Ringraziamenti}{Ringraziamenti}
 
-Ringrazio il dipartimento DIIES per aver pubblicato un modello di tesi non troppo aggiornato.
+\sout{Ringrazio il dipartimento DIIES per aver pubblicato un modello di tesi non troppo aggiornato.}
 
-Ringrazio Alessandro Campolo\footnote{``ringrazio me stesso" è poco radiofonico.} \footnote{e così abbiamo scoperto anche le note a piè di pagina.}
-per aver aggiornato il modello e scritto la documentazione per installare tutti i programmi per lavorare al documento.
+Ringrazio Alessandro\footnote{``ringrazio me stesso" è poco radiofonico.}
+per aver aggiornato il modello e aver scritto la documentazione
+per installare tutti i programmi per lavorare al documento.
 
-Ringrazio Gemma Pia Romeo per aver fornito la sua tesi come punto di partenza per gli esempi presenti in queste pagine.
+Ringrazio Gemma e Gabriele per aver fornito parte degli esempi presenti in queste pagine.
+
+Ringrazio Giulia per aver fornito le immagini dell'installazione su MacOS.
 
 
 
