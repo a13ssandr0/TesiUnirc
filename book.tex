@@ -144,7 +144,7 @@
 
 
 
-\pagenumbering{arabic} \setcounter{page}{7}
+\pagenumbering{arabic} \setcounter{page}{9}
 
 \chapter*{Indice degli acronimi} \label{acronimi}
 \markboth{Indice degli acronimi}{Indice degli acronimi}
@@ -158,6 +158,7 @@
 \end{acronym}
 
 
+\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % il motivo dei seguenti tre comandi è di creare un nuovo capitolo regolare, ma senza numero
 \chapter*{Introduzione} \label{introduzione}
@@ -205,10 +206,6 @@ Nel corso della trattazione verranno illustrati:
   
 
 
-
-\mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \chapter{Preparazione dell'ambiente} \label{Cap.1}
 
 \vspace{2cm}
@@ -229,8 +226,14 @@ L'installazione dei programmi verrà documentata per le tre principali piattafor
 \section{TeX Live}\label{sezione}
 Essendo il processo più lungo, è consigliabile cominciare con l'installazione di TeX Live.
 
+ATTENZIONE:\\
+Nel progetto di esempio viene usato il pacchetto minted per la colorazione della sintassi (vedere \ref{codice_con_minted}).\label{esempio_url}
+L'uso di questo pacchetto richiede l'interprete Python con il modulo pygments installato.
+
+Seguire questa facile guida per installare Python \url{https://www.aranzulla.it/come-installare-python-1210886.html} e 
+successivamente aprire un terminale in cui digitare \ \ {\tt pip install Pygments} \ \ per installare il suddetto modulo.
+
 \subsection{Windows}\label{sottosezione}
-\label{esempio_url}
 Per l'installazione su Windows scaricare l'installer da \url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}.
 
 L'installer è firmato con una chiave non registrata in Windows, di conseguenza SmartScreen visualizzerà un avviso,
