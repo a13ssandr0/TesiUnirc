@@ -1,6 +1,7 @@
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "git.autofetch": true,
+    "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.latex.recipe.default": "xelatexmk -> bibtex -> xelatexmk * 2",
     "latex-workshop.latex.recipes": [
         {
