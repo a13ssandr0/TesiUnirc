@@ -235,8 +235,10 @@ ATTENZIONE:\\
 Nel progetto di esempio viene usato il pacchetto minted per la colorazione della sintassi (vedere \ref{codice_con_minted}).\label{esempio_url}
 L'uso di questo pacchetto richiede l'interprete Python con il modulo pygments installato.
 
-Seguire questa facile guida per installare Python \url{https://www.aranzulla.it/come-installare-python-1210886.html} e 
-successivamente aprire un terminale in cui digitare \ \ {\tt pip install Pygments} \ \ per installare il suddetto modulo.
+Seguire questa facile guida per installare Python \url{https://www.aranzulla.it/come-installare-python-1210886.html},
+mettere la spunta sulla casella "Aggiungi Python 3.X al PATH", finita l'installazione, cliccare su "Disable PATH length limit".
+Successivamente aprire un terminale in cui digitare \ \ {\tt pip install Pygments} \ \ per installare il suddetto modulo
+(dopo ogni comando inserito nel terminale, anche nei casi successivi, premere invio per eseguire il comando).
 
 \subsection{Windows}\label{sottosezione}
 Per l'installazione su Windows scaricare l'installer da \url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}.
@@ -303,6 +305,15 @@ L'installazione di tutti i pacchetti può richiedere anche due ore, è possibile
         \label{texlive_installato}
     \end{subfigure}
 \end{figure}
+
+\subsubsection{Risoluzione dei problemi}
+In uno dei casi di installazione su Windows il processo non andava a buon fine
+nella cartella predefinita, possibili soluzioni:
+\begin{itemize}
+    \item Eseguire l'installazione con l'antivirus disattivato
+    \item Riavviare l'installazione come amministratore
+    \item Tornare all'immagine \ref{texlive_config_2} e cambiare la cartella di installazione da {C:/texlive/20XX} a {C:/Programmi/texlive/20XX}.
+\end{itemize}
 
 \label{esempio_citazione}
 \subsection{MacOS \citep{installMacTeX}}
@@ -440,7 +451,8 @@ direttamente il sito del programma \url{https://code.visualstudio.com/download}.
 \end{minted}
 
 \subsection{Configurazione}
-Installato Visual Studio Code e completata la configurazione iniziale (opzionale),
+Installato Visual Studio Code, seguire la configurazione guidata iniziale
+(è possibile saltare questo passaggio), una volta terminata,
 la schermata presentata sarà simile a questa.
 \begin{figure}[H]
     \centering
@@ -472,9 +484,9 @@ Cercare "Open User Settings (JSON)" come in figura \ref{menu_azioni_rapide} e se
     \label{json_impostazioni}
 \end{figure}
 Nella schermata che si apre incollare il contenuto del file 
-my\_settings.json presente nella cartella del progetto.
-È possibile eliminare il file dopo aver inserito il suo contenuto 
-nel file settings.json di vscode.\\
+my\_settings.json presente nella cartella del progetto su GitHub
+\url{https://github.com/a13ssandr0/TesiUnirc/blob/c610ac6218d6cdb98ae88a5b00fd51c0c3e25d69/my_settings.json}.
+\\
 ATTENZIONE: Il file che si sta modificando è un file JSON, in quanto
 tale richiede alcuni semplici accorgimenti di sintassi.
 Se, come nella figura \ref{json_impostazioni}, sono già presenti altre 
@@ -513,18 +525,18 @@ Git è un client che permette la creazione e gestione di repository.
 \subsection{Installazione \citep{installGit}}
 In base alle prove effettuate, risulta già installato su MacOS, 
 quindi questo non verrà documentato.
-\subsubsection{Windows}
+\subsubsection{Installazione su Windows}
 Cliccando col tasto destro sull'icona di Start, a seconda della versione del 
-sistema operativo e della configurazione, cliccare su:
+sistema operativo e della configurazione, comparirà una delle tre opzioni sotto, cliccare:
 \begin{itemize}
-    \item Apri Powershell (Amministratore)
-    \item Apri Prompt dei comandi (Amministratore)
-    \item Apri Terminale (Amministratore)
+    \item Powershell (Amministratore)
+    \item Prompt dei comandi (Amministratore)
+    \item Terminale (Admin)
 \end{itemize}
-Nel prompt scrivere {\tt winget install git.git}, accettare con {\tt y} 
-e invio quando chiede conferma.
+Nel prompt scrivere {\tt winget install git.git}, al primo utilizzo winget potrebbe chiedere
+di accettare i termini, accettare con {\tt y} e invio quando chiede conferma.
 
-\subsubsection{Linux}
+\subsubsection{Installazione su Linux}
 Anche in questo caso l'installazione dipende da distribuzione a distribuzione. 
 Per le distribuzioni Debian-based, il comando è il seguente:
 \begin{minted}{bash}
@@ -534,8 +546,8 @@ Per le distribuzioni Debian-based, il comando è il seguente:
 \subsection{Configurazione}
 Per poter usare Git è necessario specificare nome e email dell'utente che lo userà.
 Sempre nel terminale inserire questi due comandi (validi per tutte le piattaforme)
-opportunamente modificati con i vostri dati, è molto importante prestare attenzione
-alle virgolette attorno a nome e email:
+opportunamente modificati con i vostri dati, e premere invio dopo ogni comando.
+È molto importante prestare attenzione alle virgolette attorno a nome e email:
 \begin{minted}{bash}
     git config --global user.name "Mario Rossi"
     git config --global user.email "mario.rossi@unirc.it"
@@ -597,6 +609,9 @@ questo espediente è da evitare quando si prepara il documento per la stampa e r
 
 \section{Visual Studio Code}
 Creata la repository personale, è possibile clonarla in vscode. \citep{vscodeGit}
+In caso il menu non dovesse essere come sotto, ma presentasse un errore, nel messaggio
+d'errore dovrebbe essere presente un pulsante "reload" per ricaricare VSCode, nel caso
+non fosse presente nemmeno quello, chiudere e riaprie VSCode
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/vscode/vscode_clone_repo.png}
@@ -616,7 +631,23 @@ Su MacOS è molto probabile che all'esecuzione del compilatore venga restituito 
 errore ENOENT, fare riferimento al primo punto della sezione Risoluzione dei problemi
 a pagina \pageref{enoent}.
 
+\chapter {Normale utilizzo}
+Durante il normale utilizzo del programma per la scrittura del documento,
+è buona norma eseguire un commit delle modifiche ad intervalli regolari, per
+sincronizzare il lavoro su sul server di GitHub e per avere una cronologia delle modifiche.
 
+I passaggi per eseguire il commit sono:
+\begin{enumerate}
+    \item Salvare i file modificati
+    \item Passare alla scheda "Controllo del codice sorgente" \includegraphics[height=5mm]{images/vscode/controllo_versione_icona_modifiche.png}
+    \item Inserire un messaggio descrittivo delle modifiche e seguire cliccando sulla freccetta accanto a "Commit" e poi su "commit e sincronizzazione"
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/vscode/commit_con_messaggio.png}
+        \caption{Commit con messaggio}
+        \label{commit_con_messaggio}
+    \end{figure}
+\end{enumerate}
 
 \chapter{Esempi}  \label{Cap.3}
 
