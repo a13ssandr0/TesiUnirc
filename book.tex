@@ -237,7 +237,7 @@ L'uso di questo pacchetto richiede l'interprete Python con il modulo pygments in
 
 Seguire questa facile guida per installare Python \url{https://www.aranzulla.it/come-installare-python-1210886.html},
 mettere la spunta sulla casella "Aggiungi Python 3.X al PATH", finita l'installazione, cliccare su "Disable PATH length limit".
-Successivamente aprire un terminale in cui digitare \ \ {\tt pip install Pygments} \ \ per installare il suddetto modulo
+Successivamente aprire un terminale in cui digitare \ \ {\tt pip3 install Pygments} \ \ per installare il suddetto modulo
 (dopo ogni comando inserito nel terminale, anche nei casi successivi, premere invio per eseguire il comando).
 
 \subsection{Windows}\label{sottosezione}
@@ -469,7 +469,7 @@ per aprire il menu delle estensioni.
     \label{schermata_gestore_estensioni}
 \end{figure}
 Nella barra di ricerca cercare Latex Workshop e premere su installa per avviare l'installazione.
-Terminata l'installazione aprire il menu delle azioni rapide con Ctrl + Alt + P (Cmd + Alt + P su MacOS).
+Terminata l'installazione aprire il menu delle azioni rapide con Ctrl + Shift + P (Cmd + Shift + P su MacOS).
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/vscode/vscode_user_settings.png}
@@ -487,9 +487,12 @@ Nella schermata che si apre incollare il contenuto del file
 my\_settings.json presente nella cartella del progetto su GitHub
 \url{https://github.com/a13ssandr0/TesiUnirc/blob/c610ac6218d6cdb98ae88a5b00fd51c0c3e25d69/my_settings.json}.
 \\
-ATTENZIONE: Il file che si sta modificando è un file JSON, in quanto
-tale richiede alcuni semplici accorgimenti di sintassi.
-Se, come nella figura \ref{json_impostazioni}, sono già presenti altre 
+\\
+\textbf{ATTENZIONE}: Il file che si sta modificando è un file JSON, in quanto
+tale richiede alcuni semplici accorgimenti di sintassi.\\
+Dopo la prima installazione, il file conterrà esclusivamente due parentesi graffe,
+posizionare il cursore tra le due parentesi, premere invio e incollare il contenuto del file sopra menzionato.\\
+Se e solo se, come nella figura \ref{json_impostazioni}, dovessero essere già presenti altre 
 righe, dopo l'ultima è necessario aggiungere una virgola prima 
 di incollare il resto delle impostazioni.
 
@@ -523,8 +526,7 @@ Per svolgere questo compito ci si avvarrà del programma git e del servizio GitH
 \section{Git}
 Git è un client che permette la creazione e gestione di repository.
 \subsection{Installazione \citep{installGit}}
-In base alle prove effettuate, risulta già installato su MacOS, 
-quindi questo non verrà documentato.
+
 \subsubsection{Installazione su Windows}
 Cliccando col tasto destro sull'icona di Start, a seconda della versione del 
 sistema operativo e della configurazione, comparirà una delle tre opzioni sotto, cliccare:
@@ -535,6 +537,15 @@ sistema operativo e della configurazione, comparirà una delle tre opzioni sotto
 \end{itemize}
 Nel prompt scrivere {\tt winget install git.git}, al primo utilizzo winget potrebbe chiedere
 di accettare i termini, accettare con {\tt y} e invio quando chiede conferma.
+
+\subsubsection{Installazione su MacOS}
+In base alle prove effettuate, risulta già installato su MacOS.
+
+Qualora non fosse installato recarsi sul terminale e scrivere 
+\begin{minted}{bash}
+   git
+\end{minted}
+Premere "invio". Il programma installerà automaticamente git dopo aver chiesto conferma per l'installazione degli strumenti sviluppatore.
 
 \subsubsection{Installazione su Linux}
 Anche in questo caso l'installazione dipende da distribuzione a distribuzione. 
