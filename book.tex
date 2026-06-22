@@ -1,4 +1,4 @@
-\documentclass[envcountsame,envcountchap]{svmono}
+\documentclass[envcountsame,envcountchap]{styles/svmono}
 
 % Import fontspec package for font management
 \usepackage{fontspec}
@@ -22,7 +22,7 @@
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage{float}
-\input{monokai-light-listings} % imports listings and sets Monokai theme
+\input{styles/monokai-light-listings} % imports listings and sets Monokai theme
 \usepackage[hyphens]{url}
 \usepackage{acronym}
 \usepackage{natbib}
@@ -32,18 +32,10 @@
 \usepackage{lscape}
 \usepackage{amsmath}
 \usepackage[normalem]{ulem} % testo barrato
-\usepackage{hyperref} % serve per inserire link nel testo, 
-% utile solo per documenti non destinati alla stampa
+% \usepackage{hyperref} % serve per inserire link nel testo, utile solo per documenti non destinati alla stampa
 
-
-\setlength{\textwidth}{12.7cm}
-\setlength{\textheight}{20.0cm}
-\setlength{\oddsidemargin}{3.50cm}
-\setlength{\evensidemargin}{-0.3cm}  %foglio a destra 0.06
-\setlength{\topmargin}{-1cm}
-\setlength{\parindent}{15pt}
-\setcounter{tocdepth}{5}  %serve per mettere nell'indice i sotto-sotto paragrafi
-\setcounter{secnumdepth}{5} %serve per numerare i sotto-sotto paragrafi
+% Impostazioni di pagina e macro per frontespizio/dedica (vedi styles/impostazioni.tex)
+\input{styles/impostazioni}
 
 
 \makeindex             % used for the subject index
@@ -61,73 +53,16 @@
 
 \frontmatter
 
-\begin{titlepage}
+\frontespizio
+    {Ingegneria Civile, Energia, Ambiente e Materiali} % Dipartimento
+    {Ingegneria ...}                                   % Corso di Laurea
+    {TITOLO TESI DI LAUREA}                            % Titolo
+    {Gabriele Chirico}                                 % Candidato/i
+    {Alessandro Campolo, Giovanni Zaccuri}             % Relatore/i
+    {Angelo Latella}                                   % Correlatore/i (lasciare {} se assente)
+    {2023-2024}                                        % Anno Accademico
 
-    \begin{center}
-
-    \large{\bf Università degli Studi Mediterranea di Reggio Calabria}
-
-    \vspace*{1mm}
-
-    \large{Dipartimento di Ingegneria Civile, Energia, Ambiente e Materiali}
-
-    \vspace*{1mm}
-
-    \normalsize{Corso di Laurea in Ingegneria ...}
-
-    \vspace*{1mm}
-
-    \hspace*{-0mm}
-
-    \rule{125mm}{.2mm}  %{lunghezza}{spessore}
-
-
-    \vspace{18mm}
-
-    \begin{figure}[h!]
-        \centerline{\includegraphics[width=3cm]{images/logounirc.png}}
-    \end{figure}
-
-    \vspace{5mm}
-
-    \textbf{Tesi di Laurea}
-
-    \vspace{5mm}
-
-    %% TITOLO DELLA TESI
-    \large{\bf TITOLO TESI DI LAUREA}
-
-    \vspace{22mm}
-
-    \begin{tabular}{lcl}
-        {\large Relatore} & \ \hskip 2.2cm \ & {\large Candidato} \\
-        \ & \ & \ \\
-        {Alessandro Campolo} &               & {Gabriele Chirico}\\
-        \ & \ & \ \\
-        {\large Correlatore} &               & \\ %commentare se assente
-        \ & \ & \ \\
-        {Alessandro Campolo} &               & \\ %commentare se assente
-        \\
-    \end{tabular}
-
-    \rule{125mm}{.2mm}
-
-    \textbf{Anno Accademico 2023-2024}
-    \end{center}
-
-\end{titlepage}
-
-\newpage
-\newpage
-\cleardoublepage
-\thispagestyle{empty}
-\vspace*{\stretch{1}}
-\begin{flushright}
-\itshape
-<DEDICA>
-\end{flushright}
-\vspace{\stretch{2}}
-\cleardoublepage
+\dedica{<DEDICA>}
 
 \newpage
 
@@ -135,17 +70,14 @@
 
 % questo aggiunge l'indice al documento
 \tableofcontents
-
 \listoffigures
 \listoftables
 
 
 
-\pagenumbering{arabic} \setcounter{page}{9}
-
 \chapter*{Indice degli acronimi} \label{acronimi}
 \markboth{Indice degli acronimi}{Indice degli acronimi}
-\begin{acronym}[WYSIWYM]
+\begin{acronym}[AAAAAAA] % sostituire con l'acronimo più lungo per calcolare l'allineamento nell'indice
     % gli acronimi devono essere ordinati manualmente
     \acro{DICEAM}{Dipartimento di Ingegneria Civile, dell'Energia, dell'Ambiente e dei Materiali}
     \acro{DIIES}{Dipartimento di Ingegneria dell'Informazione, delle Infrastrutture e dell'Energia Sostenibile}
@@ -154,8 +86,13 @@
     \acro{PAU}{Dipartimento di Patrimonio, Architettura e Urbanistica}
 \end{acronym}
 
+% salva l'ultimo numero romano usato per continuare la numerazione araba senza ripartire da 1
+\newcounter{ultimapaginaromana}
+\setcounter{ultimapaginaromana}{\value{page}}
 
 \mainmatter%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{\value{ultimapaginaromana}}
+\stepcounter{page}
 
 % il motivo dei seguenti tre comandi è di creare un nuovo capitolo regolare, ma senza numero
 \chapter*{Introduzione} \label{introduzione}
