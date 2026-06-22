@@ -1,0 +1,1538 @@
+\usepackage{listings}
+\usepackage{xcolor}
+\lstloadaspects{directives}
+
+\definecolor{mlBackground}{HTML}{FAFAFA}
+\definecolor{mlForeground}{HTML}{383A42}
+\definecolor{mlKeyword}{HTML}{E45649}
+\definecolor{mlString}{HTML}{50A14F}
+\definecolor{mlComment}{HTML}{A0A1A7}
+\definecolor{mlNumber}{HTML}{986801}
+\definecolor{mlFunction}{HTML}{4078F2}
+\definecolor{mlType}{HTML}{0184BC}
+\definecolor{mlOperator}{HTML}{E45649}
+\definecolor{mlDirective}{HTML}{C18401}
+\definecolor{mlBuiltin}{HTML}{0184BC}
+
+\lstdefinestyle{MonokaiLight}{
+  backgroundcolor=\color{mlBackground},
+  basicstyle=\ttfamily\color{mlForeground},
+  keywordstyle=\color{mlKeyword}\bfseries,
+  keywordstyle=[2]\color{mlType},
+  keywordstyle=[3]\color{mlBuiltin},
+  keywordstyle=[4]\color{mlDirective},
+  directivestyle=\color{mlDirective}\bfseries,
+  stringstyle=\color{mlString},
+  commentstyle=\color{mlComment}\itshape,
+  numberstyle=\tiny\color{mlNumber},
+  identifierstyle=\color{mlForeground},
+  emphstyle=\color{mlFunction}\bfseries,
+  emphstyle=[2]\color{mlType},
+  numbers=left,
+  numbersep=8pt,
+  stepnumber=1,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=false,
+  tabsize=4,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{mlComment},
+  xleftmargin=1.5em,
+  framexleftmargin=1.5em,
+  captionpos=b,
+  keepspaces=true,
+}
+
+\lstdefinelanguage{Assembler}{
+  morekeywords={mov,add,sub,mul,div,inc,dec,cmp,jmp,je,jne,jg,jl,jge,jle,
+    push,pop,call,ret,nop,lea,and,or,xor,not,shl,shr,test,
+    in,out,int,hlt,loop,rep,std,cld,
+    global,extern,section,equ,db,dw,dd,dq,times,align},
+  morecomment=[l]{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage[GNU]{Assembler}{
+  morekeywords={.section,.text,.data,.bss,.global,.extern,.equ,.set,
+    .byte,.word,.long,.quad,.ascii,.asciz,.string,.space,.fill,.align,
+    .type,.size,.file,.loc,.cfi_startproc,.cfi_endproc},
+  alsoletter=.,
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{ACSL}{
+  morekeywords={assert,assume,requires,ensures,assigns,invariant,variant,
+    predicate,logic,lemma,axiom,reads,writes,loop,behavior,complete,disjoint,
+    exits,breaks,continues,returns,terminates},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{ACM}{
+  morekeywords={begin,end,if,then,else,while,do,for,to,downto,procedure,
+    function,var,const,type,array,of,record,set,file,program,uses,unit,
+    interface,implementation},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{ACMscript}{
+  morekeywords={function,var,return,if,else,while,for,do,break,continue,
+    new,delete,typeof,instanceof,in,this,null,undefined,true,false},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Ant}{
+  morekeywords={project,target,property,task,echo,javac,java,mkdir,copy,
+    delete,move,fileset,patternset,classpath,path,pathelement,import,
+    include,exclude,depends,default,basedir,name,value,file,dir,destdir,
+    srcdir,includes,excludes},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{bash}{
+  morekeywords={if,then,else,elif,fi,case,esac,for,while,until,do,done,
+    in,function,return,exit,export,local,readonly,declare,typeset,
+    source,alias,unalias,set,unset,shift,getopts,break,continue,
+    echo,printf,read,test,true,false,let,eval,exec,trap,wait,
+    cd,ls,mkdir,rm,cp,mv,cat,grep,sed,awk,find,sort,cut,tr,
+    chmod,chown,touch,pwd,env,which,xargs},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[s]{\`}{\`},
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{CIL}{
+  morekeywords={.assembly,.module,.class,.method,.field,.property,.event,
+    .namespace,.custom,.maxstack,.locals,.entrypoint,
+    ldarg,ldloc,ldsfld,ldfld,starg,stloc,stsfld,stfld,
+    call,callvirt,ret,newobj,newarr,ldelem,stelem,
+    add,sub,mul,div,rem,and,or,xor,not,neg,shl,shr,
+    beq,bne,blt,bgt,ble,bge,br,brtrue,brfalse,
+    box,unbox,castclass,isinst,ldtoken,sizeof,
+    init,public,private,protected,static,virtual,abstract,
+    sealed,override,hidebysig,cil,managed},
+  alsoletter=.,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Clean}{
+  morekeywords={if,let,in,where,case,of,with,class,instance,import,from,
+    definition,implementation,module,system,derive,generic,special,
+    otherwise,infixl,infixr,infix,dynamic,foreign,export,ccall,
+    True,False,Start},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Comal 80}{
+  morekeywords={AND,AUTO,CASE,DEL,DIM,DIV,DO,ELSE,ENDCASE,ENDFUNC,ENDIF,
+    ENDPROC,ENDWHILE,EXEC,FALSE,FOR,FUNC,IF,IN,INPUT,LEN,LET,LIST,
+    MOD,NEW,NEXT,NOT,OF,OR,OTHERWISE,PRINT,PROC,RANDOM,READ,REPEAT,
+    RETURN,RUN,SCAN,SELECT,STEP,STOP,THEN,TO,TRUE,UNTIL,WHILE,WITH},
+  morecomment=[l]{//},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Comsol}{
+  morekeywords={model,component,geometry,mesh,physics,study,solution,
+    result,export,batch,param,variable,function,material,selection,
+    global,dataset,numerical,plot,table,interpolation,analytic,
+    piecewise,gaussian,random},
+  morecomment=[l]{\%},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{csh}{
+  morekeywords={if,then,else,endif,foreach,while,end,switch,case,default,
+    breaksw,endsw,break,continue,goto,exit,set,unset,setenv,unsetenv,
+    alias,unalias,source,echo,onintr,repeat,shift,umask,limit,unlimit},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Delphi}{
+  morekeywords={and,array,as,asm,begin,case,class,const,constructor,
+    destructor,dispinterface,div,do,downto,else,end,except,exports,
+    file,finalization,finally,for,function,goto,if,implementation,
+    in,inherited,initialization,inline,interface,is,label,library,
+    mod,nil,not,object,of,or,out,packed,procedure,program,property,
+    raise,record,repeat,resourcestring,set,shl,shr,string,then,
+    threadvar,to,try,type,unit,until,uses,var,while,with,xor,
+    absolute,abstract,assembler,automated,cdecl,contains,default,
+    deprecated,dispid,dynamic,export,external,far,final,forward,
+    implements,index,message,name,near,nodefault,on,override,
+    overload,package,pascal,private,protected,public,published,
+    read,readonly,register,reintroduce,requires,resident,safecall,
+    sealed,static,stdcall,stored,virtual,write,writeonly},
+  morecomment=[l]{//},
+  morecomment=[s]{\{}{\}},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Eiffel}{
+  morekeywords={across,agent,alias,all,and,as,assign,attached,attribute,
+    check,class,convert,create,Current,debug,deferred,detachable,do,
+    else,elseif,end,ensure,expanded,export,external,feature,from,
+    frozen,if,implies,inherit,inspect,invariant,like,local,loop,
+    not,note,obsolete,old,once,only,or,prefix,redefine,rename,
+    require,rescue,Result,retry,select,separate,some,strip,
+    then,undefine,until,variant,Void,when,xor},
+  morecomment=[l]{--},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Elan}{
+  morekeywords={IF,THEN,ELSE,FI,FOR,FROM,BY,UPTO,DOWNTO,WHILE,REPEAT,
+    UNTIL,SELECT,OF,END,PROC,OP,FN,TYPE,LET,CONST,VAR,BOOL,INT,
+    REAL,TEXT,ROW,STRUCT,REF,TRUE,FALSE,AND,OR,NOT,MOD,DIV,
+    BEGIN,END,SKIP,LEAVE,CONTINUE,RETURN,THESAURUS,CONCR},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{elisp}{
+  morekeywords={defun,defvar,defconst,defmacro,let,let*,setq,setf,if,
+    cond,when,unless,while,dotimes,dolist,progn,prog1,prog2,and,or,
+    not,eq,equal,car,cdr,cons,list,append,length,mapcar,mapc,
+    lambda,funcall,apply,eval,quote,backquote,function,
+    nil,t,require,provide,with-current-buffer,save-excursion,
+    interactive,message,error,read,print,princ,format},
+  morecomment=[l]{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{erlang}{
+  morekeywords={after,and,andalso,band,begin,bnot,bor,bsl,bsr,bxor,
+    case,catch,cond,div,end,fun,if,let,module,not,of,or,orelse,
+    query,receive,rem,try,when,xor,
+    export,import,define,record,include,ifdef,ifndef,endif,undef,
+    spec,type,opaque,callback},
+  morecomment=[l]{\%},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Euphoria}{
+  morekeywords={and,break,by,case,constant,continue,do,else,elseif,
+    elsif,end,entry,enum,exit,for,function,global,goto,if,ifdef,
+    include,label,not,object,or,procedure,return,sequence,then,
+    to,type,until,while,with,without,xor,
+    atom,integer,object,sequence,string},
+  morecomment=[l]{--},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{GAP}{
+  morekeywords={function,end,return,local,if,then,else,fi,while,do,od,
+    for,in,repeat,until,break,continue,quit,QUIT,
+    true,false,fail,infinity,
+    rec,list,IsInt,IsList,IsRecord,IsBool,IsString,IsFunction,
+    Print,Display,Error,Info,Assert},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{GCL}{
+  morekeywords={if,fi,do,od,skip,abort,true,false,
+    proc,end,var,const,array,of,begin,
+    and,or,not,div,mod},
+  morecomment=[s]{\{}{\}},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Gnuplot}{
+  morekeywords={set,unset,show,reset,plot,splot,replot,fit,update,
+    pause,load,call,print,pwd,cd,exit,quit,help,
+    title,xlabel,ylabel,zlabel,xrange,yrange,zrange,
+    terminal,output,style,with,using,via,every,
+    lines,points,linespoints,dots,impulses,boxes,
+    key,legend,grid,border,tics,xtics,ytics,ztics,
+    function,data,smooth,csplines,bezier,acsplines,
+    linestyle,linewidth,linecolor,pointtype,pointsize,
+    multiplot,size,origin,margin,encoding,locale},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Go}{
+  morekeywords={break,case,chan,const,continue,default,defer,else,
+    fallthrough,for,func,go,goto,if,import,interface,map,package,
+    range,return,select,struct,switch,type,var,
+    bool,byte,complex64,complex128,error,float32,float64,
+    int,int8,int16,int32,int64,rune,string,uint,uint8,uint16,
+    uint32,uint64,uintptr,
+    true,false,iota,nil,
+    append,cap,close,complex,copy,delete,imag,len,
+    make,new,panic,print,println,real,recover},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  morestring=[s]{`}{`},
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{hansl}{
+  morekeywords={scalar,series,list,matrix,bundle,array,string,strings,
+    function,return,if,else,endif,loop,endloop,while,foreach,in,
+    break,next,null,NA,pi,true,false,
+    ols,tsls,ar,arma,garch,logit,probit,tobit,
+    print,printf,sprintf,smpl,data,open,set},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Haskell}{
+  morekeywords={case,class,data,default,deriving,do,else,forall,foreign,
+    hiding,if,import,in,infix,infixl,infixr,instance,let,module,
+    newtype,of,qualified,then,type,where,
+    Bool,Char,Double,Float,Int,Integer,IO,Maybe,Either,String,
+    True,False,Nothing,Just,Left,Right,
+    map,filter,foldr,foldl,zipWith,zip,unzip,concat,concatMap,
+    head,tail,last,init,null,length,reverse,
+    show,read,putStr,putStrLn,getLine,return,error,undefined},
+  morecomment=[l]{--},
+  morecomment=[s]{\{-}{-\}},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{HTML}{
+  morekeywords={html,head,body,title,meta,link,script,style,
+    div,span,p,a,img,ul,ol,li,table,tr,td,th,
+    form,input,button,select,option,textarea,label,
+    h1,h2,h3,h4,h5,h6,header,footer,nav,main,section,article,aside,
+    br,hr,em,strong,b,i,u,s,sub,sup,code,pre,blockquote,
+    canvas,video,audio,source,iframe,embed,object,
+    charset,content,name,rel,href,src,alt,class,id,style,
+    type,value,placeholder,required,disabled,checked,selected,
+    width,height,colspan,rowspan,action,method,enctype,
+    onclick,onchange,onsubmit,oninput,onload,onmouseover},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{IDL}{
+  morekeywords={AND,BEGIN,BREAK,CASE,COMMON,COMPILE_OPT,CONTINUE,DO,
+    ELSE,END,ENDCASE,ENDELSE,ENDFOR,ENDFOREACH,ENDIF,ENDREP,
+    ENDSWITCH,ENDWHILE,EQ,FOR,FOREACH,FORWARD_FUNCTION,FUNCTION,
+    GE,GOTO,GT,IF,INHERITS,LE,LT,MOD,NE,NOT,OF,ON_ERROR,OR,
+    PRO,REPEAT,RETURN,SWITCH,THEN,UNTIL,WHILE,XOR},
+  morecomment=[l]{;},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Inform}{
+  morekeywords={Object,Routine,Global,Constant,Array,Include,
+    if,else,while,for,do,until,return,rfalse,rtrue,switch,
+    print,print_ret,new_line,read,quit,save,restore,restart,
+    objectloop,break,continue,jump,
+    has,hasnt,in,notin,ofclass,provides,
+    give,move,remove,place,
+    Verb,Extend,Grammar,Attribute,Property},
+  morecomment=[l]{!},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Java}{
+  morekeywords={abstract,assert,boolean,break,byte,case,catch,char,
+    class,const,continue,default,do,double,else,enum,extends,
+    final,finally,float,for,goto,if,implements,import,instanceof,
+    int,interface,long,native,new,package,private,protected,
+    public,return,short,static,strictfp,super,switch,synchronized,
+    this,throw,throws,transient,try,void,volatile,while,
+    true,false,null,
+    String,Object,Integer,Long,Double,Float,Boolean,Character,Byte,Short,
+    System,Math,StringBuilder,StringBuffer,Thread,Runnable,Exception},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{JVMIS}{
+  morekeywords={aaload,aastore,aconst_null,aload,anewarray,areturn,
+    arraylength,astore,athrow,baload,bastore,bipush,caload,castore,
+    checkcast,d2f,d2i,d2l,dadd,daload,dastore,dcmpg,dcmpl,dconst,
+    ddiv,dload,dmul,dneg,drem,dreturn,dstore,dsub,dup,dup2,
+    f2d,f2i,f2l,fadd,faload,fastore,fcmpg,fcmpl,fconst,fdiv,
+    fload,fmul,fneg,frem,freturn,fstore,fsub,getfield,getstatic,
+    goto,i2b,i2c,i2d,i2f,i2l,i2s,iadd,iaload,iand,iastore,
+    iconst,idiv,if_acmpeq,if_acmpne,if_icmpeq,if_icmpge,
+    if_icmpgt,if_icmple,if_icmplt,if_icmpne,ifeq,ifge,ifgt,
+    ifle,iflt,ifne,ifnonnull,ifnull,iinc,iload,imul,ineg,
+    instanceof,invokedynamic,invokeinterface,invokespecial,
+    invokestatic,invokevirtual,ior,irem,ireturn,ishl,ishr,
+    istore,isub,iushr,ixor,jsr,l2d,l2f,l2i,ladd,laload,land,
+    lastore,lcmp,lconst,ldc,ldiv,lload,lmul,lneg,lookupswitch,
+    lor,lrem,lreturn,lshl,lshr,lstore,lsub,lushr,lxor,monitorenter,
+    monitorexit,multianewarray,new,newarray,nop,pop,putfield,
+    putstatic,ret,return,saload,sastore,sipush,swap,tableswitch,
+    wide},
+  morecomment=[l]{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{ksh}{
+  morekeywords={if,then,else,elif,fi,case,esac,for,while,until,do,done,
+    in,function,return,exit,export,local,readonly,typeset,integer,float,
+    print,whence,alias,unalias,set,unset,shift,getopts,break,continue,
+    source,autoload,times,ulimit,umask,wait,jobs,fg,bg,disown,
+    co,let,eval,exec,trap,cd,builtin},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Lingo}{
+  morekeywords={if,then,else,end,repeat,while,with,in,from,down,to,
+    exit,return,next,put,into,before,after,get,set,global,property,
+    on,me,the,a,an,true,false,void,empty,EMPTY,
+    integer,float,string,symbol,list,propList,point,rect,
+    member,sprite,frame,channel,script,behavior},
+  morecomment=[l]{--},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Lisp}{
+  morekeywords={defun,defvar,defconst,defmacro,defparameter,defstruct,
+    defclass,defmethod,defgeneric,defpackage,
+    let,let*,setq,setf,if,cond,when,unless,and,or,not,
+    while,do,dolist,dotimes,loop,
+    progn,prog1,prog2,block,return,return-from,tagbody,go,
+    car,cdr,cons,list,append,length,reverse,mapcar,mapc,
+    lambda,funcall,apply,eval,quote,function,
+    nil,t,eq,equal,eql,equalp,
+    format,print,princ,read,write,
+    string,symbol,number,integer,float,char,
+    vector,array,make-array,aref,
+    error,warn,signal,handler-case},
+  morecomment=[l]{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{LLVM}{
+  morekeywords={define,declare,global,constant,type,alias,module,
+    target,datalayout,triple,
+    ret,br,switch,indirectbr,invoke,resume,unreachable,
+    add,fadd,sub,fsub,mul,fmul,udiv,sdiv,fdiv,urem,srem,frem,
+    shl,lshr,ashr,and,or,xor,
+    alloca,load,store,getelementptr,fence,cmpxchg,atomicrmw,
+    trunc,zext,sext,fptrunc,fpext,fptoui,fptosi,uitofp,sitofp,
+    ptrtoint,inttoptr,bitcast,addrspacecast,
+    icmp,fcmp,phi,select,call,va_arg,
+    extractelement,insertelement,shufflevector,
+    extractvalue,insertvalue,landingpad,cleanup,catch,filter,
+    eq,ne,ugt,uge,ult,ule,sgt,sge,slt,sle,
+    oeq,ogt,oge,olt,ole,one,ord,ueq,une,uno,
+    true,false,void,label,metadata,
+    i1,i8,i16,i32,i64,i128,float,double,fp128,x86_fp80,
+    private,internal,available_externally,linkonce,weak,common,
+    appending,extern_weak,linkonce_odr,weak_odr,external,
+    default,hidden,protected,
+    nounwind,uwtable,alwaysinline,noinline,optnone,
+    align,inbounds,volatile,atomic,singlethread,
+    unnamed_addr,local_unnamed_addr,
+    nonnull,dereferenceable,noundef},
+  morecomment=[l]{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Logo}{
+  morekeywords={to,end,make,local,output,stop,repeat,if,ifelse,test,
+    iftrue,iffalse,while,for,foreach,
+    forward,backward,right,left,home,clearscreen,penup,pendown,
+    pencolor,setpencolor,pensize,setpensize,hideturtle,showturtle,
+    setx,sety,setxy,setpos,setheading,
+    print,show,type,word,sentence,list,first,last,butfirst,butlast,
+    count,empty,equal,member,
+    sum,difference,product,quotient,remainder,modulo,power,sqrt,
+    and,or,not,
+    run,runresult,apply,invoke,
+    fd,bk,rt,lt,cs,pu,pd,ht,st},
+  morecomment=[l]{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{make}{
+  morekeywords={include,define,endef,ifdef,ifndef,ifeq,ifneq,else,endif,
+    override,export,unexport,vpath,
+    all,clean,install,uninstall,dist,distclean,check,test},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Matlab}{
+  morekeywords={break,case,catch,continue,else,elseif,end,for,function,
+    global,if,otherwise,persistent,return,switch,try,while,
+    true,false,pi,Inf,NaN,eps,i,j,
+    zeros,ones,eye,rand,randn,linspace,colon,
+    size,length,numel,ndims,class,typecast,
+    plot,figure,subplot,xlabel,ylabel,title,legend,grid,hold,
+    disp,fprintf,sprintf,error,warning,input,
+    cell,struct,containers},
+  morecomment=[l]{\%},
+  morecomment=[s]{\%\{}{\%\}},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Mercury}{
+  morekeywords={module,interface,implementation,import_module,use_module,
+    export_pred,pred,func,type,inst,mode,typeclass,instance,
+    if,then,else,not,true,fail,
+    det,semidet,nondet,multi,erroneous,failure,
+    in,out,di,uo,mdi,muo,
+    is,some,all,promise,pragma,
+    call,apply,solutions,aggregate,
+    string,int,float,char,bool,list,maybe,pair,unit,
+    yes,no},
+  morecomment=[l]{\%},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{MetaPost}{
+  morekeywords={beginfig,endfig,draw,fill,pickup,clip,cutdraw,
+    path,pair,color,pen,picture,boolean,string,transform,
+    for,endfor,forsuffixes,forever,
+    if,else,elseif,fi,
+    def,vardef,primarydef,secondarydef,tertiarydef,enddef,
+    let,save,interim,newinternal,
+    addto,setbounds,
+    dotlabel,label,drawarrow,drawdblarrow,
+    show,message,errmessage,errhelp,
+    input,end,bye,
+    beginchar,endchar,charcode,
+    numeric,suffix,text,expr,
+    scaled,shifted,rotated,slanted,xscaled,yscaled,zscaled,
+    reflectedabout,rotatedaround,transformed,
+    withcolor,withpen,dashed,evenly,withdots,
+    subpath,point,direction,directiontime,
+    length,xpart,ypart,xxpart,xypart,yxpart,yypart,
+    bbox,llcorner,lrcorner,ulcorner,urcorner,center,
+    origin,up,down,left,right,
+    black,white,red,green,blue},
+  morecomment=[l]{\%},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Miranda}{
+  morekeywords={if,then,else,where,otherwise,type,abstype,with,
+    readvals,show,error,
+    map,filter,foldr,foldl,zip,zip2,unzip,
+    True,False,
+    and,or,not,mod,div,rem},
+  morecomment=[l]{||},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Mizar}{
+  morekeywords={theorem,proof,qed,thus,hence,then,let,be,be,assume,
+    take,consider,set,reconsider,per,cases,suppose,end,
+    definition,registration,scheme,notation,vocabulary,
+    constructors,requirements,environ,begin,
+    not,and,or,implies,iff,ex,for,holds,st,being,such,that,
+    hereby,suffices,provided,given,from},
+  morecomment=[l]{::},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{ML}{
+  morekeywords={and,as,case,datatype,do,else,end,eqtype,exception,
+    fn,fun,functor,handle,if,in,include,infix,infixr,let,local,
+    nonfix,of,open,op,raise,rec,sharing,sig,signature,struct,
+    structure,then,type,val,where,while,with,withtype,
+    true,false,nil,ref,
+    int,real,bool,char,string,list,unit,
+    abs,app,at,ceil,chr,concat,explode,floor,hd,implode,
+    length,map,not,null,o,ord,print,real,rev,round,size,
+    str,substring,tl,trunc,use},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Modula-2}{
+  morekeywords={AND,ARRAY,BEGIN,BY,CASE,CONST,DEFINITION,DIV,DO,ELSE,
+    ELSIF,END,EXIT,EXPORT,FOR,FROM,IF,IMPLEMENTATION,IMPORT,IN,
+    LOOP,MOD,MODULE,NOT,OF,OR,POINTER,PROCEDURE,QUALIFIED,RECORD,
+    REPEAT,RETURN,SET,THEN,TO,TYPE,UNTIL,VAR,WHILE,WITH,
+    ABS,BOOLEAN,CARDINAL,CHAR,CHR,DEC,EXCL,FALSE,FLOAT,HALT,
+    HIGH,INC,INCL,INTEGER,LONGCARD,LONGINT,LONGREAL,MAX,MIN,
+    NIL,ODD,ORD,PROC,REAL,SIZE,TRUE,TRUNC,VAL},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{MuPAD}{
+  morekeywords={and,begin,break,case,do,elif,else,end,for,from,if,
+    not,or,otherwise,proc,repeat,return,step,then,until,while,
+    TRUE,FALSE,FAIL,NIL,infinity,PI,E,
+    hold,eval,evalp,map,select,
+    Type,Dom,Cat,prog,
+    print,fprint,iolib,
+    assume,is,simplify,combine,factor,expand,
+    diff,int,sum,limit,series,solve,ode},
+  morecomment=[l]{//},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{NASTRAN}{
+  morekeywords={SOL,CEND,BEGIN,BULK,ENDDATA,PARAM,TITLE,SUBTITLE,LABEL,
+    LOAD,SPC,MPC,FORCE,MOMENT,PRESSURE,GRAVITY,TEMP,
+    GRID,CORD1R,CORD2R,CORD1C,CORD2C,CORD1S,CORD2S,
+    CBAR,CBEAM,CTRIA3,CTRIA6,CQUAD4,CQUAD8,CHEXA,CPENTA,CTETRA,
+    PBAR,PBEAM,PSHELL,PSOLID,PROD,
+    MAT1,MAT2,MAT3,MAT8,MAT9,MATS1,
+    EIGRL,EIGR,EIGC,FREQ,FREQ1,FREQ2,
+    NLPARM,TSTEP,TSTEPNL,
+    DOPTPRM,DESVAR,DCONSTR,DRESP1,DRESP2},
+  morecomment=[l]{\$},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Oberon-2}{
+  morekeywords={ARRAY,BEGIN,BY,CASE,CONST,DIV,DO,ELSE,ELSIF,END,EXIT,
+    FOR,IF,IMPORT,IN,IS,LOOP,MOD,MODULE,NIL,OF,OR,POINTER,
+    PROCEDURE,RECORD,REPEAT,RETURN,THEN,TO,TYPE,UNTIL,VAR,WHILE,WITH,
+    ABS,ASH,CAP,CHR,COPY,DEC,ENTIER,EXCL,HALT,INC,INCL,LEN,
+    LONG,MAX,MIN,NEW,ODD,ORD,SHORT,SIZE},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Octave}{
+  morekeywords={break,case,catch,continue,do,else,elseif,end,endfor,
+    endfunction,endif,endswitch,endwhile,for,function,if,otherwise,
+    persistent,return,switch,try,until,unwind_protect,
+    unwind_protect_cleanup,while,
+    true,false,pi,Inf,NaN,eps,
+    zeros,ones,eye,rand,randn,linspace,
+    size,length,numel,rows,columns,
+    plot,figure,xlabel,ylabel,title,legend,
+    disp,printf,sprintf,fprintf,error,warning,input,
+    cellfun,fieldnames,struct,cell},
+  morecomment=[l]{\%},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Oz}{
+  morekeywords={andthen,at,attr,case,catch,choice,class,cond,declare,
+    define,dis,else,elsecase,elseif,elseof,end,export,fail,false,
+    feature,finally,from,fun,functor,if,import,in,lazy,local,
+    lock,meth,nil,not,of,or,orelse,prepare,proc,prop,raise,
+    require,self,skip,then,thread,true,try,unit},
+  morecomment=[l]{\%},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Perl}{
+  morekeywords={and,cmp,continue,CORE,do,else,elsif,eq,exp,for,foreach,
+    ge,gt,if,le,log,lt,m,ne,no,not,or,package,print,printf,
+    q,qq,qr,qw,qx,ref,return,s,sub,tr,unless,until,use,while,
+    xor,y,
+    my,our,local,strict,warnings,use,
+    push,pop,shift,unshift,splice,reverse,sort,grep,map,join,split,
+    chomp,chop,length,substr,index,rindex,uc,lc,ucfirst,lcfirst,
+    open,close,read,write,print,printf,say,die,warn,exit},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{PHP}{
+  morekeywords={abstract,and,array,as,break,callable,case,catch,class,
+    clone,const,continue,declare,default,die,do,echo,else,elseif,
+    empty,enddeclare,endfor,endforeach,endif,endswitch,endwhile,
+    eval,exit,extends,final,finally,fn,for,foreach,function,global,
+    goto,if,implements,include,include_once,instanceof,insteadof,
+    interface,isset,list,match,namespace,new,null,or,print,private,
+    protected,public,readonly,require,require_once,return,static,
+    switch,throw,trait,try,true,false,unset,use,var,while,xor,yield,
+    int,float,string,bool,array,object,void,mixed,never,self,parent},
+  morecomment=[l]{//},
+  morecomment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{PL/I}{
+  morekeywords={ALLOCATE,BEGIN,BY,CALL,CLOSE,DECLARE,DCL,DEFAULT,DFT,
+    DELETE,DISPLAY,DO,EDIT,ELSE,END,ENTRY,EXIT,FETCH,FILE,
+    FORMAT,FREE,GET,GO,GOTO,IF,INITIAL,INIT,LABEL,LIST,
+    ON,OPEN,OTHERWISE,PACKAGE,PROCEDURE,PROC,PUT,READ,RETURN,
+    REVERT,REWRITE,SIGNAL,STOP,THEN,TO,UNTIL,WHEN,WHILE,WRITE,
+    FIXED,FLOAT,DECIMAL,DEC,BINARY,BIN,CHARACTER,CHAR,BIT,
+    VARYING,PICTURE,PIC,POINTER,PTR,ENTRY,LABEL,
+    COMPLEX,REAL,SIGNED,UNSIGNED,ALIGNED,UNALIGNED,
+    TRUE,FALSE,NULL},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Plasm}{
+  morekeywords={DEF,IF,THEN,ELSE,LAMBDA,LET,IN,AND,OR,NOT,
+    T,R,S,COLOR,STRUCT,SKELETON,OFFSET,MAP,
+    PI,SIN,COS,TAN,ASIN,ACOS,ATAN,SQRT,ABS,
+    POLYLINE,POLYGON,CIRCLE,CUBOID,CYLINDER,CONE,SPHERE,
+    MKPOL,MKPOL,CONVEXHULL,SIMPLEX,POWER,
+    APPLY,CAR,CDR,CONS,NULL,PAIR,ISLIST,ISNUM,ISVECT,
+    PRINT,VRML,VIEW},
+  morecomment=[l]{--},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{PostScript}{
+  morekeywords={add,sub,mul,div,mod,abs,neg,ceiling,floor,round,truncate,
+    and,or,xor,not,bitshift,
+    eq,ne,lt,le,gt,ge,
+    array,dict,string,name,boolean,integer,real,null,mark,
+    def,load,store,bind,known,where,
+    if,ifelse,for,forall,loop,repeat,exit,stop,stopped,
+    exec,run,
+    moveto,lineto,curveto,closepath,
+    stroke,fill,clip,newpath,
+    setlinewidth,setgray,setrgbcolor,setfont,
+    gsave,grestore,concat,scale,translate,rotate,
+    show,showpage,copypage,erasepage,
+    pop,dup,exch,roll,index,copy,clear,
+    begin,end,currentdict,systemdict,userdict},
+  morecomment=[l]{\%},
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{POV}{
+  morekeywords={camera,light_source,object,sphere,box,cylinder,cone,
+    torus,plane,polygon,triangle,smooth_triangle,mesh,mesh2,
+    texture,pigment,normal,finish,interior,media,
+    color,colour,rgb,rgbf,rgbt,rgbft,
+    translate,rotate,scale,matrix,transform,
+    union,intersection,difference,merge,
+    ambient,diffuse,specular,roughness,reflection,refraction,
+    ior,fade_distance,fade_power,
+    background,sky_sphere,fog,rainbow,
+    global_settings,assumed_gamma,max_trace_level,
+    radiosity,photons,subsurface},
+  moredirectives={include,declare,local,undef,if,ifdef,ifndef,
+    else,end,while,for,break,macro,invoke},
+  moredelim=*[directive]\#,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Promela}{
+  morekeywords={active,assert,atomic,bit,bool,break,byte,chan,d_step,
+    do,else,empty,enabled,eval,false,fi,full,goto,hidden,if,
+    init,int,len,mtype,nempty,never,nfull,od,of,pc_value,pid,
+    printf,priority,proctype,provided,run,short,show,skip,
+    timeout,true,typedef,unless,unsigned,xr,xs},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Prolog}{
+  morekeywords={is,not,mod,div,rem,abs,max,min,gcd,msort,sort,
+    assert,asserta,assertz,retract,retractall,abolish,
+    functor,arg,copy_term,numbervars,
+    atom,number,integer,float,compound,is_list,callable,
+    var,nonvar,atomic,ground,
+    write,writeln,read,read_term,
+    nl,tab,get_char,put_char,
+    findall,bagof,setof,aggregate_all,
+    true,fail,false,otherwise,
+    call,once,ignore,
+    succ,plus,between,
+    append,member,length,last,nth0,nth1,
+    string_concat,atom_string,term_to_atom,
+    format,with_output_to},
+  morecomment=[l]{\%},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{PSTricks}{
+  morekeywords={psset,psgrid,psline,pscircle,psellipse,psarc,psarcn,
+    psdot,psdots,pspolygon,pscurve,psbezier,pscoil,psspring,
+    psframe,psdiamond,pstriangle,
+    rput,uput,qdisk,qline,
+    pspicture,endpspicture,
+    psplot,psparametricplot,dataplot,fileplot,
+    psaxes,pscustom,
+    newpsobject,newpsstyle,
+    linewidth,linecolor,linestyle,fillstyle,fillcolor,
+    framearc,cornersize,arrowsize,arrowinset,
+    showpoints,dotscale,dotangle},
+  morecomment=[l]{\%},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Python}{
+  morekeywords={False,None,True,and,as,assert,async,await,break,class,
+    continue,def,del,elif,else,except,finally,for,from,global,
+    if,import,in,is,lambda,nonlocal,not,or,pass,raise,return,
+    try,while,with,yield,
+    int,float,complex,str,bytes,bytearray,list,tuple,dict,set,
+    frozenset,bool,type,object,
+    print,len,range,enumerate,zip,map,filter,sorted,reversed,
+    open,input,format,repr,str,
+    abs,all,any,bin,hex,oct,chr,ord,
+    isinstance,issubclass,hasattr,getattr,setattr,delattr,
+    super,property,staticmethod,classmethod,
+    Exception,TypeError,ValueError,KeyError,IndexError,
+    AttributeError,NameError,ImportError},
+  morecomment=[l]{\#},
+  morecomment=[s]{"""}{"""},
+  morecomment=[s]{'''}{'''},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{R}{
+  morekeywords={if,else,repeat,while,function,for,in,next,break,
+    TRUE,FALSE,NULL,Inf,NaN,NA,NA_integer_,NA_real_,
+    NA_complex_,NA_character_,
+    c,list,vector,matrix,array,data.frame,factor,
+    length,dim,names,nrow,ncol,str,summary,head,tail,
+    print,cat,message,warning,stop,
+    library,require,source,
+    apply,lapply,sapply,tapply,vapply,mapply,Map,Reduce,Filter,
+    plot,hist,barplot,boxplot,pairs,ggplot,
+    lm,glm,t.test,chisq.test,cor,
+    read.csv,write.csv,read.table,write.table,
+    paste,paste0,sprintf,format,strsplit,substr,gsub,grepl},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Reduce}{
+  morekeywords={procedure,return,if,then,else,for,do,step,until,collect,
+    sum,product,while,repeat,until,begin,end,
+    algebraic,symbolic,lisp,
+    on,off,let,clear,
+    int,df,limit,sum,prod,
+    solve,factorize,factor,expand,
+    matrix,mat,det,trace,tp,
+    complex,precise,rounded},
+  morecomment=[l]{\%},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Rexx}{
+  morekeywords={ADDRESS,ARG,CALL,DO,DROP,ELSE,END,EXIT,EXPOSE,IF,
+    INTERPRET,ITERATE,LEAVE,NOP,NUMERIC,OPTIONS,OTHERWISE,PARSE,
+    PROCEDURE,PULL,PUSH,QUEUE,RETURN,SAY,SELECT,SIGNAL,THEN,
+    TO,TRACE,UPPER,WHEN,WHILE,UNTIL,BY,FOR,FOREVER,
+    DIGITS,ENGINEERING,FORM,FUZZ,SCIENTIFIC,
+    VAR,VALUE,UPPER,LOWER,EXTERNAL,VERSION,LINEIN,SOURCE,
+    abs,address,arg,b2x,bitand,bitor,bitxor,c2d,c2x,center,
+    centre,changestr,compare,condition,copies,countstr,d2b,d2c,
+    d2x,datatype,date,delstr,delword,digits,errortext,format,
+    fuzz,insert,lastpos,left,length,linesize,max,min,overlay,
+    pos,queued,random,reverse,right,sign,sourceline,space,strip,
+    substr,subword,symbol,time,translate,trunc,userid,value,
+    verify,word,wordindex,wordlength,wordpos,words,x2b,x2c,x2d,
+    xrange},
+  morecomment=[l]{--},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{RSL}{
+  morekeywords={scheme,class,type,value,variable,channel,axiom,
+    object,extend,with,is,as,
+    if,then,else,elsif,end,
+    while,do,until,
+    for,in,
+    let,in,
+    case,of,
+    true,false,
+    and,or,not,
+    abs,card,len,hd,tl,
+    union,inter,
+    pre,post,inv},
+  morecomment=[l]{--},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Ruby}{
+  morekeywords={__ENCODING__,__LINE__,__FILE__,BEGIN,END,alias,and,begin,
+    break,case,class,def,defined,do,else,elsif,end,ensure,false,for,
+    if,in,module,next,nil,not,or,redo,rescue,retry,return,self,super,
+    then,true,undef,unless,until,when,while,yield,
+    attr_accessor,attr_reader,attr_writer,include,extend,prepend,
+    raise,fail,require,require_relative,load,
+    puts,print,p,pp,gets,chomp,
+    map,select,reject,each,each_with_index,each_with_object,
+    inject,reduce,flat_map,collect,detect,find,any?,all?,none?,
+    Integer,Float,String,Array,Hash,Symbol,Range,Proc,Lambda},
+  morecomment=[l]{\#},
+  morecomment=[s]{=begin}{=end},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{S}{
+  morekeywords={if,else,repeat,while,function,for,in,next,break,
+    TRUE,FALSE,NULL,Inf,NaN,NA,
+    c,list,vector,matrix,array,data.frame,
+    length,dim,nrow,ncol,
+    print,cat,stop,warning,
+    apply,lapply,sapply,
+    plot,hist},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{SAS}{
+  morekeywords={DATA,SET,MERGE,BY,IF,THEN,ELSE,DO,END,WHILE,UNTIL,
+    OUTPUT,RETURN,RETAIN,KEEP,DROP,RENAME,WHERE,
+    PROC,RUN,QUIT,OPTIONS,LIBNAME,FILENAME,
+    CLASS,VAR,MODEL,MEANS,FREQ,TABLES,WAYS,
+    PRINT,SORT,TRANSPOSE,CONTENTS,DATASETS,
+    FORMAT,INFORMAT,LABEL,LENGTH,ATTRIB,
+    INPUT,INFILE,FILE,PUT,GET,CARDS,DATALINES,
+    ARRAY,CALL,LINK,GOTO,STOP,ABORT,ERROR,
+    sum,mean,std,min,max,n,nmiss,median,mode,range,
+    cat,cats,catt,catx,compress,scan,substr,trim,left,right,
+    upcase,lowcase,propcase,tranwrd,
+    today,date,time,datetime,mdy,ymd,year,month,day},
+  morecomment=[l]{\*},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Scala}{
+  morekeywords={abstract,case,catch,class,def,do,else,extends,false,
+    final,finally,for,forSome,if,implicit,import,lazy,match,new,
+    null,object,override,package,private,protected,return,sealed,
+    super,this,throw,trait,true,try,type,val,var,while,with,yield,
+    Any,AnyRef,AnyVal,Boolean,Byte,Char,Double,Float,Int,Long,Short,
+    String,Unit,Nothing,Null,
+    List,Map,Set,Option,Some,None,Either,Left,Right,
+    Seq,Vector,Array,Iterator,
+    Future,Promise,Try,Success,Failure,
+    println,print,printf,readLine,
+    map,flatMap,filter,foreach,fold,reduce,collect,
+    toList,toSeq,toMap,toSet,toArray},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Scilab}{
+  morekeywords={if,then,elseif,else,end,while,do,for,in,break,continue,
+    return,function,endfunction,select,case,otherwise,try,catch,
+    global,clear,clc,
+    and,or,not,
+    true,false,
+    zeros,ones,eye,rand,randn,linspace,
+    size,length,numel,
+    plot,plot2d,plot3d,xlabel,ylabel,title,legend,
+    disp,printf,fprintf,mprintf,error,warning,
+    string,number,isempty,isnumeric,islogical,ischar},
+  morecomment=[l]{//},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{sh}{
+  morekeywords={if,then,else,elif,fi,case,esac,for,while,until,do,done,
+    in,return,exit,export,readonly,
+    echo,printf,read,test,true,false,
+    break,continue,shift,
+    set,unset,eval,exec,trap,wait,
+    cd,ls,mkdir,rm,cp,mv,cat,grep,sed,awk,find,
+    chmod,chown,touch,pwd},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{SHELXL}{
+  morekeywords={TITL,CELL,ZERR,LATT,SYMM,SFAC,UNIT,LIST,MERG,FMAP,
+    GRID,PLAN,WGHT,FVAR,BOND,CONF,MPLA,RTAB,HTAB,EQIV,CONN,
+    PART,RESI,AFIX,DFIX,DANG,FLAT,DELU,SIMU,ISOR,NCSY,SADI,
+    SAME,RIGU,DEFS,SUMP,L.S.,CGLS,BLOC,DAMP,STIR,GCOR,OMIT,
+    SHEL,BASF,TWIN,EXTI,SWAT,MERG,HKLF,END,
+    ACTA,SIZE,TEMP,XNPD,WPDB,SPEC},
+  morecomment=[l]{REM },
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{SPARQL}{
+  morekeywords={SELECT,DISTINCT,REDUCED,CONSTRUCT,DESCRIBE,ASK,FROM,
+    NAMED,WHERE,ORDER,BY,LIMIT,OFFSET,GROUP,HAVING,VALUES,
+    OPTIONAL,UNION,GRAPH,FILTER,BIND,SERVICE,MINUS,EXISTS,NOT,
+    ASC,DESC,A,
+    STR,LANG,LANGMATCHES,DATATYPE,BOUND,IRI,URI,BNODE,RAND,
+    ABS,CEIL,FLOOR,ROUND,CONCAT,STRLEN,UCASE,LCASE,
+    ENCODE_FOR_URI,CONTAINS,STRSTARTS,STRENDS,STRBEFORE,STRAFTER,
+    YEAR,MONTH,DAY,HOURS,MINUTES,SECONDS,TIMEZONE,TZ,NOW,
+    UUID,STRUUID,MD5,SHA1,SHA256,SHA384,SHA512,COALESCE,IF,
+    STRLANG,STRDT,isIRI,isURI,isBLANK,isLITERAL,isNUMERIC,
+    COUNT,SUM,MIN,MAX,AVG,SAMPLE,GROUP_CONCAT,
+    BASE,PREFIX},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{SQL}{
+  morekeywords={ADD,ALL,ALTER,AND,ANY,AS,ASC,BACKUP,BETWEEN,BY,CASE,
+    CHECK,COLUMN,CONSTRAINT,CREATE,DATABASE,DEFAULT,DELETE,DESC,
+    DISTINCT,DROP,EXEC,EXISTS,FOREIGN,FROM,FULL,GROUP,HAVING,
+    IN,INDEX,INNER,INSERT,INTO,IS,JOIN,KEY,LEFT,LIKE,LIMIT,NOT,
+    NULL,ON,OR,ORDER,OUTER,PRIMARY,PROCEDURE,REPLACE,RIGHT,
+    ROWNUM,SELECT,SET,SOME,TABLE,TOP,TRUNCATE,UNION,UNIQUE,
+    UPDATE,VALUES,VIEW,WHERE,WITH,
+    BEGIN,COMMIT,ROLLBACK,TRANSACTION,SAVEPOINT,
+    AVG,COUNT,MAX,MIN,SUM,
+    CAST,CONVERT,COALESCE,NULLIF,IIF,
+    CHAR,VARCHAR,INT,INTEGER,BIGINT,SMALLINT,TINYINT,
+    FLOAT,REAL,DECIMAL,NUMERIC,BOOLEAN,DATE,TIME,DATETIME,
+    TIMESTAMP,TEXT,BLOB,CLOB},
+  morecomment=[l]{--},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Swift}{
+  morekeywords={associatedtype,class,deinit,enum,extension,fileprivate,
+    func,import,init,inout,internal,let,open,operator,precedencegroup,
+    private,protocol,public,rethrows,static,struct,subscript,typealias,
+    var,break,case,catch,continue,default,defer,do,else,fallthrough,for,
+    guard,if,in,repeat,return,throw,switch,where,while,
+    as,false,is,nil,self,Self,super,throw,throws,true,try,
+    Any,AnyObject,Bool,Character,Double,Float,Int,Int8,Int16,Int32,Int64,
+    Optional,Set,Dictionary,Array,String,Void,Never,
+    print,debugPrint,assert,assertionFailure,precondition,
+    fatalError,print,
+    map,flatMap,compactMap,filter,reduce,forEach,sorted,
+    @available,@discardableResult,@escaping,@objc,@IBOutlet,
+    @IBAction,@State,@Binding,@ObservedObject,@Published,@main},
+  alsoletter=@,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{VBScript}{
+  morekeywords={And,ByRef,ByVal,Call,Case,Class,Const,Dim,Do,Each,Else,
+    ElseIf,Empty,End,Eqv,Error,Exit,Explicit,False,For,Function,
+    Get,GoTo,If,Imp,In,Is,Let,Like,Loop,Mod,New,Next,Not,Nothing,
+    Null,On,Option,Or,Private,Property,Public,ReDim,Rem,Resume,
+    Select,Set,Step,Sub,Then,To,True,Until,Wend,While,With,Xor,
+    CInt,CLng,CDbl,CStr,CBool,CDate,CByte,CVar,CSng,CCur,
+    Int,Fix,Abs,Sgn,Sqr,Log,Exp,Sin,Cos,Tan,Atn,
+    Len,Left,Right,Mid,Trim,LTrim,RTrim,
+    UCase,LCase,InStr,InStrRev,Replace,
+    MsgBox,InputBox,WScript,WshShell,CreateObject},
+  morecomment=[l]{'},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{VHDL}{
+  morekeywords={abs,access,after,alias,all,and,architecture,array,
+    assert,attribute,begin,block,body,buffer,bus,case,component,
+    configuration,constant,disconnect,downto,else,elsif,end,
+    entity,exit,file,for,function,generate,generic,group,guarded,
+    if,impure,in,inertial,inout,is,label,library,linkage,literal,
+    loop,map,mod,nand,new,next,nor,not,null,of,on,open,or,others,
+    out,package,port,postponed,procedure,process,pure,range,record,
+    register,reject,report,return,rol,ror,select,severity,signal,
+    shared,sla,sll,sra,srl,subtype,then,to,transport,type,
+    unaffected,units,until,use,variable,wait,when,while,with,
+    xnor,xor,
+    bit,boolean,character,integer,natural,positive,real,string,time,
+    std_logic,std_logic_vector,unsigned,signed,
+    ieee,std_logic_1164,numeric_std,numeric_bit},
+  morecomment=[l]{--},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Verilog}{
+  morekeywords={always,and,assign,begin,buf,bufif0,bufif1,case,casex,
+    casez,cmos,deassign,default,defparam,disable,edge,else,end,
+    endcase,endfunction,endmodule,endprimitive,endspecify,endtable,
+    endtask,event,for,force,forever,fork,function,highz0,highz1,
+    if,ifnone,initial,inout,input,integer,join,large,macromodule,
+    medium,module,nand,negedge,nmos,nor,not,notif0,notif1,or,
+    output,parameter,pmos,posedge,primitive,pull0,pull1,pulldown,
+    pullup,rcmos,real,realtime,reg,release,repeat,rnmos,rpmos,
+    rtran,rtranif0,rtranif1,scalared,small,specify,specparam,
+    strong0,strong1,supply0,supply1,table,task,time,tran,tranif0,
+    tranif1,tri,tri0,tri1,triand,trior,trireg,vectored,wait,
+    wand,weak0,weak1,while,wire,wor,xnor,xor,
+    bit,byte,int,longint,shortint,logic,shortreal,
+    automatic,localparam,genvar,generate,endgenerate,
+    always_comb,always_ff,always_latch,interface,endinterface,
+    modport,virtual,class,endclass,typedef,struct,enum,union,
+    program,endprogram,property,endproperty,sequence,endsequence,
+    assert,assume,cover,expect,restrict},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{XML}{
+  morekeywords={xml,xmlns,version,encoding,standalone,DOCTYPE,ELEMENT,
+    ATTLIST,ENTITY,NOTATION,CDATA,ID,IDREF,IDREFS,NMTOKEN,
+    NMTOKENS,REQUIRED,IMPLIED,FIXED,ANY,EMPTY,PCDATA},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{XSLT}{
+  morekeywords={stylesheet,transform,template,apply-templates,apply-imports,
+    call-template,param,with-param,variable,value-of,copy,copy-of,
+    if,choose,when,otherwise,for-each,sort,number,
+    output,strip-space,preserve-space,key,decimal-format,
+    namespace-alias,attribute-set,import,include,
+    element,attribute,text,comment,processing-instruction,
+    message,fallback,document,
+    match,name,select,mode,priority,test,use,
+    method,encoding,version,indent,
+    count,from,value,format,grouping-separator,grouping-size,
+    letter-value,lang,ordinal,
+    disable-output-escaping,terminate,
+    data-type,order,case-order},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{ABAP}{
+  morekeywords={DATA,TYPES,CONSTANTS,FIELD-SYMBOLS,TABLES,PARAMETERS,
+    SELECT-OPTIONS,CLASS,ENDCLASS,METHODS,ENDMETHOD,METHOD,
+    PUBLIC,PRIVATE,PROTECTED,SECTION,DEFINITION,IMPLEMENTATION,
+    FORM,ENDFORM,PERFORM,FUNCTION,ENDFUNCTION,MODULE,ENDMODULE,
+    IF,ENDIF,ELSE,ELSEIF,CASE,ENDCASE,WHEN,
+    DO,ENDDO,WHILE,ENDWHILE,LOOP,ENDLOOP,AT,
+    SELECT,FROM,WHERE,INTO,UP,TO,ORDER,BY,GROUP,
+    INSERT,UPDATE,DELETE,MODIFY,COMMIT,ROLLBACK,
+    MOVE,WRITE,CONCATENATE,SPLIT,CONDENSE,
+    CALL,EXPORTING,IMPORTING,CHANGING,EXCEPTIONS,
+    RAISE,TRY,CATCH,ENDTRY,CLEANUP,
+    REPORT,INCLUDE,DEFINE,END-OF-DEFINITION},
+  morecomment=[l]{"},
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Ada}{
+  morekeywords={abort,abs,abstract,accept,access,aliased,all,and,array,at,
+    begin,body,case,constant,declare,delay,delta,digits,do,
+    else,elsif,end,entry,exception,exit,
+    for,function,generic,goto,
+    if,in,interface,is,
+    limited,loop,
+    mod,new,not,null,
+    of,or,others,out,overriding,
+    package,pragma,private,procedure,protected,
+    raise,range,record,rem,renames,requeue,return,reverse,
+    select,separate,some,subtype,synchronized,
+    tagged,task,terminate,then,type,
+    until,use,
+    when,while,with,xor},
+  morecomment=[l]{--},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Algol}{
+  morekeywords={begin,end,if,then,else,for,do,while,until,
+    integer,real,boolean,string,array,procedure,function,
+    own,value,result,label,goto,switch,
+    true,false,comment,
+    div,mod,and,or,not,
+    step},
+  morecomment=[s]{comment}{;},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Awk}{
+  morekeywords={BEGIN,END,break,continue,delete,do,else,exit,for,function,
+    func,getline,if,in,next,nextfile,print,printf,return,while,
+    ARGC,ARGV,CONVFMT,ENVIRON,FILENAME,FNR,FS,NF,NR,OFMT,OFS,ORS,
+    RLENGTH,RSTART,RS,SUBSEP,
+    length,split,sprintf,sub,gsub,index,match,substr,tolower,toupper,
+    close,fflush,system,atan2,cos,exp,log,rand,sin,sqrt,srand,int},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Basic}{
+  morekeywords={AND,AS,CALL,CASE,CLOSE,CONST,DATA,DECLARE,DIM,DO,
+    ELSE,ELSEIF,END,EXIT,FOR,FUNCTION,GOSUB,GOTO,IF,INPUT,
+    LET,LOOP,NEXT,NOT,ON,OPEN,OPTION,OR,PRINT,READ,REM,
+    RESTORE,RETURN,SELECT,SHARED,STATIC,STEP,STOP,SUB,
+    THEN,TO,TYPE,UNTIL,WEND,WHILE,WITH,
+    TRUE,FALSE,INTEGER,LONG,SINGLE,DOUBLE,STRING,BOOLEAN},
+  morecomment=[l]{REM },
+  morecomment=[l]{'},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{C}{
+  morekeywords={auto,break,case,char,const,continue,default,do,double,
+    else,enum,extern,float,for,goto,if,inline,int,long,register,
+    restrict,return,short,signed,sizeof,static,struct,switch,
+    typedef,union,unsigned,void,volatile,while,
+    _Bool,_Complex,_Imaginary,
+    NULL,true,false},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{C++}{
+  morekeywords={alignas,alignof,and,and_eq,asm,bitand,bitor,bool,break,
+    case,catch,char,char8_t,char16_t,char32_t,class,compl,concept,
+    const,consteval,constexpr,constinit,const_cast,continue,
+    co_await,co_return,co_yield,decltype,default,delete,do,
+    double,dynamic_cast,else,enum,explicit,export,extern,false,
+    float,for,friend,goto,if,inline,int,long,mutable,namespace,
+    new,noexcept,not,not_eq,nullptr,operator,or,or_eq,private,
+    protected,public,register,reinterpret_cast,requires,return,
+    short,signed,sizeof,static,static_assert,static_cast,struct,
+    switch,template,this,thread_local,throw,true,try,typedef,
+    typeid,typename,union,unsigned,using,virtual,void,volatile,
+    wchar_t,while,xor,xor_eq,
+    std,cout,cin,endl,vector,string,map,set,pair,shared_ptr,
+    unique_ptr,nullptr_t},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Caml}{
+  morekeywords={and,as,assert,asr,begin,class,constraint,do,done,
+    downto,else,end,exception,external,false,for,fun,function,
+    functor,if,in,include,inherit,initializer,land,lazy,let,
+    lor,lsl,lsr,lxor,match,method,mod,module,mutable,new,
+    object,of,open,or,private,rec,sig,struct,then,to,true,
+    try,type,val,virtual,when,while,with,
+    int,float,bool,char,string,unit,list,array,option},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{CMake}{
+  morekeywords={add_custom_command,add_custom_target,add_definitions,
+    add_dependencies,add_executable,add_library,add_subdirectory,
+    add_test,break,build_command,cmake_minimum_required,
+    configure_file,continue,else,elseif,endforeach,endfunction,
+    endif,endmacro,endwhile,enable_language,enable_testing,
+    file,find_library,find_package,find_path,find_program,
+    foreach,function,get_filename_component,get_property,if,
+    include,include_directories,install,link_directories,
+    list,macro,mark_as_advanced,math,message,option,project,
+    return,separate_arguments,set,set_property,set_target_properties,
+    string,target_include_directories,target_link_libraries,
+    target_compile_definitions,target_compile_options,
+    unset,while},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Cobol}{
+  morekeywords={ACCEPT,ADD,ALTER,AND,CALL,CANCEL,CLOSE,COMPUTE,CONTINUE,
+    COPY,DELETE,DISPLAY,DIVIDE,ELSE,END,END-IF,END-PERFORM,
+    EVALUATE,EXIT,GO,GOBACK,IF,INITIALIZE,INSPECT,MERGE,MOVE,
+    MULTIPLY,NEXT,NOT,OPEN,OR,PERFORM,READ,RELEASE,RETURN,
+    REWRITE,SEARCH,SET,SORT,START,STOP,STRING,SUBTRACT,
+    UNSTRING,USE,WHEN,WRITE,
+    IDENTIFICATION,DIVISION,PROGRAM-ID,ENVIRONMENT,CONFIGURATION,
+    DATA,WORKING-STORAGE,FILE,LINKAGE,PROCEDURE,SECTION,
+    PIC,PICTURE,VALUE,OCCURS,REDEFINES,USAGE,
+    COMP,COMP-3,BINARY,PACKED-DECIMAL},
+  morecomment=[l]{*},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{command.com}{
+  morekeywords={CALL,CD,CHDIR,CLS,COPY,DEL,DIR,ECHO,ERASE,EXIT,FOR,
+    GOTO,IF,MD,MKDIR,MOVE,PATH,PAUSE,POPD,PROMPT,PUSHD,REM,
+    REN,RENAME,RD,RMDIR,SET,SETLOCAL,ENDLOCAL,SHIFT,START,
+    TITLE,TYPE,VER,VOL,
+    EXIST,ERRORLEVEL,DEFINED,NOT,IN,DO,
+    EQU,NEQ,LSS,LEQ,GTR,GEQ},
+  morecomment=[l]{REM },
+  morecomment=[l]{::},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Fortran}{
+  morekeywords={ALLOCATABLE,ALLOCATE,ASSIGN,BACKSPACE,BLOCK,CALL,CASE,
+    CLOSE,COMMON,CONTAINS,CONTINUE,CYCLE,DATA,DEALLOCATE,
+    DEFAULT,DIMENSION,DO,DOUBLE,ELSE,ELSEIF,ELSEWHERE,END,
+    ENDDO,ENDIF,ENTRY,EQUIVALENCE,EXIT,EXTERNAL,FORMAT,
+    FUNCTION,GO,GOTO,IF,IMPLICIT,IN,INOUT,INQUIRE,INTEGER,
+    INTENT,INTERFACE,INTRINSIC,LOGICAL,MODULE,NAMELIST,NONE,
+    NULLIFY,ONLY,OPEN,OPTIONAL,OUT,PARAMETER,PAUSE,POINTER,
+    PRECISION,PRINT,PRIVATE,PROCEDURE,PROGRAM,PUBLIC,READ,
+    REAL,RECURSIVE,RESULT,RETURN,REWIND,SAVE,SELECT,SEQUENCE,
+    STOP,SUBROUTINE,TARGET,THEN,TO,TYPE,USE,WHERE,WHILE,WRITE},
+  morecomment=[l]{!},
+  morestring=[b]',
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Lua}{
+  morekeywords={and,break,do,else,elseif,end,false,for,function,goto,
+    if,in,local,nil,not,or,repeat,return,then,true,until,while,
+    self,
+    print,pairs,ipairs,type,tostring,tonumber,pcall,xpcall,
+    require,setmetatable,getmetatable,rawget,rawset,rawequal,
+    table,string,math,io,os,coroutine},
+  morecomment=[l]{--},
+  morecomment=[s]{--[[}{]]},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Mathematica}{
+  morekeywords={If,Then,Else,While,Do,For,Module,Block,With,Function,
+    Return,Break,Continue,Which,Switch,Table,Map,Apply,Select,
+    Cases,Sort,Length,Head,Part,Replace,ReplaceAll,Rule,
+    True,False,Null,Infinity,Pi,E,I,
+    Plot,Plot3D,Graphics,Solve,NSolve,DSolve,Integrate,D,Limit,
+    Series,Simplify,FullSimplify,Expand,Factor,Together,Apart,
+    Print,Set,SetDelayed,Clear,ClearAll},
+  morecomment=[s]{(*}{*)},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{OCL}{
+  morekeywords={context,inv,pre,post,init,derive,body,def,
+    package,endpackage,
+    if,then,else,endif,
+    let,in,
+    not,and,or,xor,implies,
+    self,result,
+    true,false,
+    Set,Bag,Sequence,Collection,OrderedSet,
+    forAll,exists,select,reject,collect,isUnique,sortedBy,
+    size,isEmpty,notEmpty,includes,excludes,including,excluding,
+    union,intersection,oclIsTypeOf,oclIsKindOf,oclAsType},
+  morecomment=[l]{--},
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{OORexx}{
+  morekeywords={ADDRESS,ARG,CALL,CLASS,DO,DROP,ELSE,END,EXIT,EXPOSE,
+    FORWARD,GUARD,IF,INTERPRET,ITERATE,LEAVE,LOOP,METHOD,
+    NOP,NUMERIC,OPTIONS,OTHERWISE,PARSE,PROCEDURE,PROTECT,
+    PULL,PUSH,QUEUE,RAISE,REPLY,RETURN,ROUTINE,SAY,SELECT,
+    SIGNAL,THEN,TO,TRACE,USE,WHEN,WHILE,
+    SELF,SUPER,THIS,
+    extend,inherit,public,private,attribute},
+  morecomment=[l]{--},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Pascal}{
+  morekeywords={and,array,begin,case,const,div,do,downto,else,end,
+    file,for,function,goto,if,in,label,mod,nil,not,of,or,
+    packed,procedure,program,record,repeat,set,then,to,type,
+    until,var,while,with,
+    boolean,char,integer,real,string,
+    true,false},
+  morecomment=[s]{(*}{*)},
+  morecomment=[s]{\{}{\}},
+  morestring=[b]',
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{Simula}{
+  morekeywords={begin,end,if,then,else,for,while,do,until,step,
+    class,procedure,boolean,integer,real,text,ref,array,
+    new,this,inspect,when,otherwise,
+    true,false,none,
+    activate,detach,resume,reactivate,
+    inner,virtual,hidden,protected,
+    and,or,not,eqv,imp},
+  morecomment=[l]{!},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{tcl}{
+  morekeywords={after,append,array,break,catch,continue,eval,exit,
+    expr,for,foreach,format,global,if,incr,lappend,lindex,
+    linsert,list,llength,lrange,lreplace,lsearch,lset,lsort,
+    namespace,proc,puts,regexp,regsub,rename,return,scan,
+    set,source,split,string,switch,unset,uplevel,upvar,
+    variable,while,
+    package,require,
+    true,false},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{TeX}{
+  morekeywords={documentclass,usepackage,begin,end,section,subsection,
+    subsubsection,chapter,part,paragraph,
+    item,label,ref,cite,footnote,caption,
+    newcommand,renewcommand,def,let,edef,gdef,xdef,
+    if,else,fi,ifx,ifnum,ifdim,
+    input,include,includegraphics,
+    textbf,textit,emph,underline,
+    left,right,frac,sqrt,sum,int,
+    table,figure,tabular,array,
+    hspace,vspace,newline,par},
+  morecomment=[l]{\%},
+  style=MonokaiLight,
+}
+
+\lstdefinelanguage{VRML}{
+  morekeywords={DEF,USE,PROTO,EXTERNPROTO,Shape,Transform,Group,
+    Switch,LOD,Anchor,Billboard,Collision,Inline,
+    appearance,geometry,material,texture,
+    Box,Cone,Cylinder,Sphere,IndexedFaceSet,IndexedLineSet,
+    PointSet,ElevationGrid,Text,FontStyle,
+    Material,ImageTexture,MovieTexture,PixelTexture,
+    TextureTransform,TextureCoordinate,
+    Color,Coordinate,Normal,
+    DirectionalLight,PointLight,SpotLight,
+    PerspectiveCamera,OrthographicCamera,Viewpoint,
+    NavigationInfo,Background,Fog,WorldInfo,
+    TRUE,FALSE,NULL,
+    eventIn,eventOut,field,exposedField},
+  morecomment=[l]{\#},
+  morestring=[b]",
+  style=MonokaiLight,
+}
+
+\lstset{style=MonokaiLight}

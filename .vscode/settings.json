@@ -6,6 +6,10 @@
     "latex-workshop.latex.clean.command": "latexmk",
     "latex-workshop.latex.clean.args": ["-c", "%DOC_EXT%"],
     "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.editorAssociations": {
+        "*.pdf": "latex-workshop-pdf-hook"
+    },
     "latex-workshop.latex.outDir": "%DIR%",
     "latex-workshop.latex.recipe.default": "latexmk (xelatex)",
     "latex-workshop.latex.recipes": [
