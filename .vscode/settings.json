@@ -2,6 +2,7 @@
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "git.autofetch": true,
+    "git.postCommitCommand": "push",
     "latex-workshop.latex.clean.command": "latexmk",
     "latex-workshop.latex.clean.args": ["-c", "%DOC_EXT%"],
     "latex-workshop.latex.autoBuild.run": "onSave",
