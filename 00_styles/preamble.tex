@@ -4,13 +4,14 @@
 
 \usepackage{fontspec}
 
-% Libertinus Serif/Sans e Inconsolata non sono installati sul sistema:
-% si usano alternative equivalenti già disponibili (TeX Gyre / DejaVu).
-% Se in futuro si installano i font originali (es. fonts-libertinus,
-% fonts-inconsolata), basta sostituire i nomi qui sotto.
-\setmainfont{TeX Gyre Pagella}
-\setsansfont{TeX Gyre Heros}
-\setmonofont{DejaVu Sans Mono}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+
+% KOMA-Script usa di default il sans-serif per i titoli di capitoli/sezioni;
+% questa impostazione li riporta al font principale (roman), come nelle
+% classi LaTeX standard.
+\setkomafont{disposition}{\normalfont\bfseries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Lingua
@@ -23,14 +24,7 @@
 %% Margini
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[
-b5paper,
-inner=30mm,
-outer=22mm,
-top=28mm,
-bottom=28mm,
-bindingoffset=6mm
-]{geometry}
+\usepackage[b5paper,inner=30mm,outer=22mm,top=28mm,bottom=28mm]{geometry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Tipografia
@@ -91,10 +85,7 @@ bindingoffset=6mm
 %% Intestazioni e piè di pagina
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[
-automark,
-headsepline
-]{scrlayer-scrpage}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
 
 \clearpairofpagestyles
 
@@ -115,12 +106,13 @@ headsepline
 \usepackage{xcolor}
 \usepackage{multirow}
 \usepackage{float}
-\input{styles/monokai-light-listings} % imports listings and sets Monokai theme
+\input{00_styles/monokai-light-listings} % imports listings and sets Monokai theme
 \usepackage{acronym}
 \usepackage{array}
 \usepackage{indentfirst}
 \usepackage{lscape}
 \usepackage[normalem]{ulem} % testo barrato
+\usepackage{lipsum}
 
 \makeindex % used for the subject index
 
@@ -177,13 +169,15 @@ headsepline
 
         \vspace*{1mm}
 
-        \large{Dipartimento di #1}
+        % Dipartimento
+        \large{#1}
 
         \vspace*{1mm}
 
-        \normalsize{Corso di Laurea in #2}
+        % Corso di Laurea
+        \normalsize{#2}
 
-        \vspace*{1mm}
+        \vspace*{-1mm}
 
         \hspace*{-0mm}
 
@@ -192,7 +186,7 @@ headsepline
         \vspace{18mm}
 
         \begin{figure}[h!]
-            \centerline{\includegraphics[width=3cm]{images/logounirc.png}}
+            \centerline{\includegraphics[width=3cm]{01_images/logounirc.png}}
         \end{figure}
 
         \vspace{5mm}
@@ -204,7 +198,7 @@ headsepline
         %% TITOLO DELLA TESI
         \large{\bfseries #3}
 
-        \vspace{22mm}
+        \vfill
 
         \listaContaEStampa{#5}{\NumRelatori}{\TestoRelatori}%
         \listaContaEStampa{#6}{\NumCorrelatori}{\TestoCorrelatori}%
@@ -246,4 +240,17 @@ headsepline
     \end{flushright}
     \vspace{\stretch{2}}
     \cleardoublepage
+    \newpage
+    \thispagestyle{empty}
+}
+
+% Environment per generare la pagina di abstract
+\renewenvironment{abstract}{
+    % Creazione del capitolo
+    \chapter*{Abstract}
+    \addcontentsline{toc}{chapter}{Abstract}
+    \markboth{Abstract}{Abstract}
+}{
+    % Pagina vuota dopo abstract    
+    \newpage
 }

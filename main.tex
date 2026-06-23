@@ -1,45 +1,50 @@
-\documentclass[
-    11pt,
-    b5paper,
-    twoside,
-    openright
-]{scrreprt}
+\documentclass[11pt,b5paper,twoside,openright]{scrreprt}
 
-\input{preamble}
+\input{00_styles/preamble.tex}
 
 \begin{document}
 
 \pagenumbering{roman}
 
-\input{frontmatter/titlepage}
+\input{02_frontmatter/00_frontespizio.tex}
 
-\input{frontmatter/dedication}
-
-\input{frontmatter/abstract}
-
+% l'indice, è consigliabile non disattivarlo
 \tableofcontents
-\listoffigures
-\listoftables
 
-\input{frontmatter/acronyms}
+% le seguenti sezioni possono essere disattivate a piacimento commentando o
+% rimuovendo la riga corrispondente
+\listoffigures % lista delle figure
+\listoftables % lista delle tabelle
+\input{02_frontmatter/01_acronimi.tex} % lista degli acronimi
 
 \clearpage
 
+% salva l'ultimo numero romano usato per continuare la numerazione araba senza ripartire da 1
+\newcounter{ultimapaginaromana}
+\setcounter{ultimapaginaromana}{\value{page}}
 \pagenumbering{arabic}
+\setcounter{page}{\value{ultimapaginaromana}}
+\stepcounter{page}
 
-\input{chapters/01_introduzione}
-\input{chapters/02_stato_arte}
-\input{chapters/03_metodologia}
-\input{chapters/04_risultati}
-\input{chapters/05_conclusioni}
+% capitoli del documento, è consigliabile tenere introduzione e conclusioni
+% agire aggiungendo o rimuovendo capitoli a piacimento
+\input{03_chapters/00_introduzione.tex}
+\input{03_chapters/01_capitolo1.tex}
+\input{03_chapters/02_capitolo2.tex}
+\input{03_chapters/03_capitolo3.tex}
+\input{03_chapters/04_capitolo4.tex}
+\input{03_chapters/99_conclusioni.tex}
 
-\input{frontmatter/acknowledgements}
+% commentare o rimuovere la riga per disattivare i ringraziamenti
+\input{04_backmatter/00_ringraziamenti.tex}
 
 \appendix
 
-\input{appendices/appendiceA}
+% aggiungere o rimuovere a piacimento le righe
+% per aggiungere o rimuovere eventuali appendici
+\input{04_backmatter/01_appendiceA.tex}
 
 \bibliographystyle{apalike}
-\bibliography{bibliography/references}
+\bibliography{04_backmatter/99_bibliografia}
 
 \end{document}
