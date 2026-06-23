@@ -1,0 +1,249 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontspec}
+
+% Libertinus Serif/Sans e Inconsolata non sono installati sul sistema:
+% si usano alternative equivalenti già disponibili (TeX Gyre / DejaVu).
+% Se in futuro si installano i font originali (es. fonts-libertinus,
+% fonts-inconsolata), basta sostituire i nomi qui sotto.
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{DejaVu Sans Mono}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Lingua
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{polyglossia}
+\setdefaultlanguage{italian}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Margini
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+b5paper,
+inner=30mm,
+outer=22mm,
+top=28mm,
+bottom=28mm,
+bindingoffset=6mm
+]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tipografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{microtype}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Matematica
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath,amssymb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Tabelle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Figure
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Unità di misura
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{siunitx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Citazioni
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{csquotes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{natbib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Link
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Riferimenti intelligenti
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Intestazioni e piè di pagina
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[
+automark,
+headsepline
+]{scrlayer-scrpage}
+
+\clearpairofpagestyles
+
+\ihead{\headmark}
+
+\ohead{\pagemark}
+
+%%%%% Pacchetti aggiuntivi richiesti dal contenuto della tesi %%%%%
+%%%%% L'ordine non va modificato: LaTeX è sensibile a certi conflitti %%%%%
+
+\usepackage{parskip}
+\usepackage{makeidx}    % allows index generation
+\usepackage{subcaption} % per più figure sulla stessa riga
+\usepackage{wrapfig}
+\usepackage{multicol}
+\usepackage{latexsym}
+\usepackage{blindtext}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{float}
+\input{styles/monokai-light-listings} % imports listings and sets Monokai theme
+\usepackage{acronym}
+\usepackage{array}
+\usepackage{indentfirst}
+\usepackage{lscape}
+\usepackage[normalem]{ulem} % testo barrato
+
+\makeindex % used for the subject index
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Impostazioni di pagina
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{15pt}
+\setcounter{tocdepth}{5}    % serve per mettere nell'indice i sotto-sotto paragrafi
+\setcounter{secnumdepth}{5} % serve per numerare i sotto-sotto paragrafi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Macro per frontespizio e dedica
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Macro di supporto per \frontespizio: data una lista di nomi separati da virgola,
+% conta quanti sono e li ricompone separati da \\ (una riga per nome).
+% #1 lista, #2 macro che riceverà il conteggio, #3 macro che riceverà il testo
+\makeatletter
+\newcommand{\listaContaEStampa}[3]{%
+    \begingroup
+    \count@=0\relax
+    \def\@listaTesto{}%
+    \@for\@listaElemento:=#1\do{%
+        \advance\count@ by1\relax
+        \ifnum\count@=1
+            \xdef\@listaTesto{\@listaElemento}%
+        \else
+            \xdef\@listaTesto{\@listaTesto\\\@listaElemento}%
+        \fi
+    }%
+    \xdef#2{\the\count@}%
+    \xdef#3{\@listaTesto}%
+    \endgroup
+}
+\makeatother
+
+% Macro per generare il frontespizio della tesi.
+% Parametri:
+%   #1 Dipartimento (es. "Ingegneria Civile, Energia, Ambiente e Materiali")
+%   #2 Corso di Laurea (es. "Ingegneria Informatica")
+%   #3 Titolo della tesi
+%   #4 Candidato/i (per più candidati separare i nomi con una virgola)
+%   #5 Relatore/i (per più relatori separare i nomi con una virgola)
+%   #6 Correlatore/i, lasciare vuoto {} se assente (separare con una virgola se più di uno)
+%   #7 Anno Accademico (es. "2023-2024")
+% La dicitura "Relatore/Correlatore/Candidato" si trasforma automaticamente al
+% plurale quando vengono indicati più nomi.
+\newcommand{\frontespizio}[7]{%
+    \begin{titlepage}
+        \begin{center}
+
+        \large{\bfseries Università degli Studi Mediterranea di Reggio Calabria}
+
+        \vspace*{1mm}
+
+        \large{Dipartimento di #1}
+
+        \vspace*{1mm}
+
+        \normalsize{Corso di Laurea in #2}
+
+        \vspace*{1mm}
+
+        \hspace*{-0mm}
+
+        \rule{125mm}{.2mm} %{lunghezza}{spessore}
+
+        \vspace{18mm}
+
+        \begin{figure}[h!]
+            \centerline{\includegraphics[width=3cm]{images/logounirc.png}}
+        \end{figure}
+
+        \vspace{5mm}
+
+        \textbf{Tesi di Laurea}
+
+        \vspace{5mm}
+
+        %% TITOLO DELLA TESI
+        \large{\bfseries #3}
+
+        \vspace{22mm}
+
+        \listaContaEStampa{#5}{\NumRelatori}{\TestoRelatori}%
+        \listaContaEStampa{#6}{\NumCorrelatori}{\TestoCorrelatori}%
+        \listaContaEStampa{#4}{\NumCandidati}{\TestoCandidati}%
+
+        \noindent
+        \begin{minipage}[t]{5cm}
+            {\large \ifnum\NumRelatori>1 Relatori\else Relatore\fi}\\[2mm]
+            \TestoRelatori\\[6mm]
+            \ifnum\NumCorrelatori>0
+                {\large \ifnum\NumCorrelatori>1 Correlatori\else Correlatore\fi}\\[2mm]
+                \TestoCorrelatori
+            \fi
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t]{5cm}
+            {\large \ifnum\NumCandidati>1 Candidati\else Candidato\fi}\\[2mm]
+            \TestoCandidati
+        \end{minipage}
+
+        \rule{125mm}{.2mm}
+
+        \textbf{Anno Accademico #7}
+        \end{center}
+    \end{titlepage}
+}
+
+% Macro per generare la pagina di dedica.
+% #1 Testo della dedica
+\newcommand{\dedica}[1]{%
+    \newpage
+    \newpage
+    \cleardoublepage
+    \thispagestyle{empty}
+    \vspace*{\stretch{1}}
+    \begin{flushright}
+    \itshape
+    #1
+    \end{flushright}
+    \vspace{\stretch{2}}
+    \cleardoublepage
+}

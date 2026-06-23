@@ -1,0 +1,45 @@
+\documentclass[
+    11pt,
+    b5paper,
+    twoside,
+    openright
+]{scrreprt}
+
+\input{preamble}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\input{frontmatter/titlepage}
+
+\input{frontmatter/dedication}
+
+\input{frontmatter/abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+\input{frontmatter/acronyms}
+
+\clearpage
+
+\pagenumbering{arabic}
+
+\input{chapters/01_introduzione}
+\input{chapters/02_stato_arte}
+\input{chapters/03_metodologia}
+\input{chapters/04_risultati}
+\input{chapters/05_conclusioni}
+
+\input{frontmatter/acknowledgements}
+
+\appendix
+
+\input{appendices/appendiceA}
+
+\bibliographystyle{apalike}
+\bibliography{bibliography/references}
+
+\end{document}
