@@ -175,28 +175,26 @@
         \vspace*{1mm}
 
         % Corso di Laurea
-        \normalsize{#2}
+        \normalsize{\textit{#2}}
 
         \vspace*{-1mm}
 
-        \hspace*{-0mm}
+        
 
         \rule{125mm}{.2mm} %{lunghezza}{spessore}
 
         \vspace{18mm}
 
         \begin{figure}[h!]
-            \centerline{\includegraphics[width=3cm]{01_images/logounirc.png}}
+            \centerline{\includegraphics[width=4cm]{01_images/logounirc.png}}
         \end{figure}
 
-        \vspace{5mm}
+        \vfill
 
-        \textbf{Tesi di Laurea}
 
-        \vspace{5mm}
 
         %% TITOLO DELLA TESI
-        \large{\bfseries #3}
+        {\Large{\bfseries #3}}
 
         \vfill
 
@@ -218,6 +216,8 @@
             {\large \ifnum\NumCandidati>1 Candidati\else Candidato\fi}\\[2mm]
             \TestoCandidati
         \end{minipage}
+
+        \vspace{5mm}
 
         \rule{125mm}{.2mm}
 
@@ -242,15 +242,4 @@
     \cleardoublepage
     \newpage
     \thispagestyle{empty}
-}
-
-% Environment per generare la pagina di abstract
-\renewenvironment{abstract}{
-    % Creazione del capitolo
-    \chapter*{Abstract}
-    \addcontentsline{toc}{chapter}{Abstract}
-    \markboth{Abstract}{Abstract}
-}{
-    % Pagina vuota dopo abstract    
-    \newpage
 }
