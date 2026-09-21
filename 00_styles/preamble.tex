@@ -112,6 +112,7 @@
 \usepackage{indentfirst}
 \usepackage{lscape}
 \usepackage[normalem]{ulem} % testo barrato
+\usepackage{varwidth}
 \usepackage{lipsum}
 
 \makeindex % used for the subject index
@@ -139,9 +140,9 @@
     \@for\@listaElemento:=#1\do{%
         \advance\count@ by1\relax
         \ifnum\count@=1
-            \xdef\@listaTesto{\@listaElemento}%
+            \xdef\@listaTesto{\noexpand\mbox{\noexpand\ignorespaces\@listaElemento}}%
         \else
-            \xdef\@listaTesto{\@listaTesto\\\@listaElemento}%
+            \xdef\@listaTesto{\@listaTesto\\\noexpand\mbox{\noexpand\ignorespaces\@listaElemento}}%
         \fi
     }%
     \xdef#2{\the\count@}%
@@ -203,19 +204,21 @@
         \listaContaEStampa{#4}{\NumCandidati}{\TestoCandidati}%
 
         \noindent
-        \begin{minipage}[t]{5cm}
+        \begin{varwidth}[t]{0.48\linewidth}
+            \raggedright
             {\large \ifnum\NumRelatori>1 Relatori\else Relatore\fi}\\[2mm]
             \TestoRelatori\\[6mm]
             \ifnum\NumCorrelatori>0
                 {\large \ifnum\NumCorrelatori>1 Correlatori\else Correlatore\fi}\\[2mm]
                 \TestoCorrelatori
             \fi
-        \end{minipage}
+        \end{varwidth}
         \hfill
-        \begin{minipage}[t]{5cm}
+        \begin{varwidth}[t]{0.48\linewidth}
+            \raggedright
             {\large \ifnum\NumCandidati>1 Candidati\else Candidato\fi}\\[2mm]
             \TestoCandidati
-        \end{minipage}
+        \end{varwidth}
 
         \vspace{5mm}
 
