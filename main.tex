@@ -24,7 +24,9 @@
 \setcounter{ultimapaginaromana}{\value{page}}
 \pagenumbering{arabic}
 \setcounter{page}{\value{ultimapaginaromana}}
-\stepcounter{page}
+% nessun \stepcounter: dopo \clearpage il contatore è già sulla pagina successiva,
+% così il numero resta allineato alla pagina fisica e i capitoli (openright)
+% iniziano sempre a destra
 
 % capitoli del documento, è consigliabile tenere introduzione e conclusioni
 % agire aggiungendo o rimuovendo capitoli a piacimento
